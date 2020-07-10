@@ -1,9 +1,10 @@
 package clariah.standoffmarkup
 
-import java.io.{File, PrintWriter}
+import java.io.{File, FileInputStream, PrintWriter}
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.zip.GZIPInputStream
 
 import clariah.standoffmarkup.TEI2NAF.tei2naf
 
@@ -104,7 +105,11 @@ object MissivenToNAF {
      case e:Elem if e.label == "pc" => Term(getId(e), e.text, "_", "PC")
     })
 
-  def getTermsFromTEIFile(f: String): List[Term] =  getTermsFromTEI(XML.load(f))
+  def getTermsFromTEIFile(f: String): List[Term] =  {
+    val zipped = s"$f.gz"
+    val inputStream = new GZIPInputStream(new FileInputStream(zipped))
+    getTermsFromTEI(XML.load(inputStream))
+  }
 
   def main(args: Array[String]): Unit = {
     //TEI2NAF.main(Array(DataLocations.TEIFolder, DataLocations.tei2nafFolder))
