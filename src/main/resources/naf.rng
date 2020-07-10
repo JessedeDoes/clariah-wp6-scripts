@@ -1,0 +1,1413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <!-- DTD NAF -->
+  <define name="NAF">
+    <element name="NAF">
+      <ref name="attlist.NAF"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="nafHeader"/>
+          <ref name="raw"/>
+          <ref name="topics"/>
+          <ref name="text"/>
+          <ref name="terms"/>
+          <ref name="deps"/>
+          <ref name="chunks"/>
+          <ref name="entities"/>
+          <ref name="coreferences"/>
+          <ref name="constituency"/>
+          <ref name="srl"/>
+          <ref name="opinions"/>
+          <ref name="timeExpressions"/>
+          <ref name="factualitylayer"/>
+          <ref name="tunits"/>
+          <ref name="locations"/>
+          <ref name="dates"/>
+          <ref name="temporalRelations"/>
+          <ref name="causalRelations"/>
+          <ref name="markables"/>
+          <ref name="attribution"/>
+          <ref name="factualities"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <!-- NAF ELEMENT -->
+  <define name="attlist.NAF" combine="interleave">
+    <optional>
+      <attribute name="doc"/>
+    </optional>
+    <optional>
+      <attribute name="version"/>
+    </optional>
+    <optional>
+      <attribute name="xml:lang"/>
+    </optional>
+  </define>
+  <!-- NAFHEADER ELEMENT -->
+  <define name="nafHeader">
+    <element name="nafHeader">
+      <ref name="attlist.nafHeader"/>
+      <optional>
+        <ref name="fileDesc"/>
+      </optional>
+      <optional>
+        <ref name="public"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="linguisticProcessors"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.nafHeader" combine="interleave">
+    <empty/>
+  </define>
+  <!-- FILEDESC ELEMENT -->
+  <!--
+    <fileDesc> is an empty element containing information about the
+      computer document itself. It has the following attributes:
+    
+      - title: the title of the document (optional).
+      - author: the author of the document (optional).
+      - creationtime: when the document was created. In ISO 8601. (optional)
+      - filename: the original file name (optional).
+      - filetype: the original format (PDF, HTML, DOC, etc) (optional).
+      - pages: number of pages of the original document (optional).
+  -->
+  <define name="fileDesc">
+    <element name="fileDesc">
+      <ref name="attlist.fileDesc"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.fileDesc" combine="interleave">
+    <optional>
+      <attribute name="title"/>
+    </optional>
+    <optional>
+      <attribute name="author"/>
+    </optional>
+    <optional>
+      <attribute name="creationtime"/>
+    </optional>
+    <optional>
+      <attribute name="filename"/>
+    </optional>
+    <optional>
+      <attribute name="filetype"/>
+    </optional>
+    <optional>
+      <attribute name="pages"/>
+    </optional>
+  </define>
+  <!-- PUBLIC ELEMENT -->
+  <!--
+    <public> is an empty element which stores public information about
+      the document, such as its URI. It has the following attributes:
+    
+      - publicId: a public identifier (for instance, the number inserted by the capture server) (optional).
+      - uri: a public URI of the document (optional).
+    
+  -->
+  <define name="public">
+    <element name="public">
+      <ref name="attlist.public"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.public" combine="interleave">
+    <optional>
+      <attribute name="publicId"/>
+    </optional>
+    <optional>
+      <attribute name="uri"/>
+    </optional>
+  </define>
+  <!-- LINGUISTICPROCESSORS ELEMENT -->
+  <!--
+    <linguisticProcessors> elements store the information about which linguistic processors
+      produced the NAF document. There can be several <linguisticProcessors> elements, one
+        per NAF layer. NAF layers correspond to the top-level elements of the
+        documents, such as "text", "terms", "deps" etc.
+    
+  -->
+  <define name="linguisticProcessors">
+    <element name="linguisticProcessors">
+      <ref name="attlist.linguisticProcessors"/>
+      <oneOrMore>
+        <ref name="lp"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.linguisticProcessors" combine="interleave">
+    <attribute name="layer"/>
+  </define>
+  <!-- LP ELEMENT -->
+  <!--
+    <lp> elements describe one specific linguistic processor. <lp> elements 
+        have the following attributes:
+    
+        - name: the name of the processor
+        - version: processor's version
+        - timestamp: a timestamp, denoting the date/time at which the processor was
+        launched. The timestamp follows the XML Schema xs:dateTime type (See
+        http://www.w3.org/TR/xmlschema-2/#isoformats). In summary, the date is
+        specified following the form "YYYY-MM-DDThh:mm:ss" (all fields
+        required). To specify a time zone, you can either enter a dateTime in UTC
+        time by adding a "Z" behind the time ("2002-05-30T09:00:00Z") or you can
+        specify an offset from the UTC time by adding a positive or negative time
+        behind the time ("2002-05-30T09:00:00+06:00").
+        - beginTimestamp (optional): a timestamp, denoting the date/time at
+        which the processor started the process. It follows the XML Schema
+        xs:dateTime format.
+        - endTimestamp (optional): a timestamp, denoting the date/time at
+        which the processor ended the process. It follows the XML Schema
+        xs:dateTime format.
+    
+  -->
+  <define name="lp">
+    <element name="lp">
+      <ref name="attlist.lp"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.lp" combine="interleave">
+    <attribute name="name"/>
+    <attribute name="version"/>
+    <optional>
+      <attribute name="timestamp"/>
+    </optional>
+    <optional>
+      <attribute name="beginTimestamp"/>
+    </optional>
+    <optional>
+      <attribute name="endTimestamp"/>
+    </optional>
+    <optional>
+      <attribute name="hostname"/>
+    </optional>
+  </define>
+  <!-- RAW ELEMENT -->
+  <define name="raw">
+    <element name="raw">
+      <ref name="attlist.raw"/>
+      <text/>
+    </element>
+  </define>
+  <define name="attlist.raw" combine="interleave">
+    <optional>
+      <attribute name="id"/>
+    </optional>
+  </define>
+  <!-- TOPICS ELEMENT -->
+  <define name="topics">
+    <element name="topics">
+      <ref name="attlist.topics"/>
+      <oneOrMore>
+        <ref name="topic"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.topics" combine="interleave">
+    <empty/>
+  </define>
+  <!-- TOPIC ELEMENT -->
+  <define name="topic">
+    <element name="topic">
+      <ref name="attlist.topic"/>
+      <text/>
+    </element>
+  </define>
+  <define name="attlist.topic" combine="interleave">
+    <optional>
+      <attribute name="source"/>
+    </optional>
+    <optional>
+      <attribute name="method"/>
+    </optional>
+    <optional>
+      <attribute name="confidence"/>
+    </optional>
+    <optional>
+      <attribute name="uri"/>
+    </optional>
+  </define>
+  <!-- TEXT ELEMENT -->
+  <define name="text">
+    <element name="text">
+      <ref name="attlist.text"/>
+      <oneOrMore>
+        <ref name="wf"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.text" combine="interleave">
+    <optional>
+      <attribute name="id"/>
+    </optional>
+  </define>
+  <!-- WORDFORM ELEMENT -->
+  <!--
+    <wf> elements describe and contain all word foorms generated after the tokenization step
+      <wf> elements have the following attributes:
+        - id: the id of the word form (REQUIRED and UNIQUE)
+        - sent: sentence id of the word form (optional)
+        - para: paragraph id of the word form (optional)
+        - page: page id of the word form (optional)
+        - offset: the offset (in characters) of the word form (optional)
+        - length: the length (in characters) of the word form (optional)
+        - xpath: in case of source xml files, the xpath expression identifying the original word form (optional)
+    
+  -->
+  <define name="wf">
+    <element name="wf">
+      <ref name="attlist.wf"/>
+      <text/>
+    </element>
+  </define>
+  <define name="attlist.wf" combine="interleave">
+    <attribute name="id">
+      <data type="ID"/>
+    </attribute>
+    <optional>
+      <attribute name="sent"/>
+    </optional>
+    <optional>
+      <attribute name="para"/>
+    </optional>
+    <optional>
+      <attribute name="page"/>
+    </optional>
+    <attribute name="offset"/>
+    <attribute name="length"/>
+    <optional>
+      <attribute name="xpath"/>
+    </optional>
+  </define>
+  <!-- TERMS ELEMENT -->
+  <define name="terms">
+    <element name="terms">
+      <ref name="attlist.terms"/>
+      <oneOrMore>
+        <ref name="term"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.terms" combine="interleave">
+    <optional>
+      <attribute name="id"/>
+    </optional>
+  </define>
+  <!-- TERM ELEMENT -->
+  <!--
+    attributes of term elements
+    
+    id: unique identifier (REQUIRED AND UNIQUE)
+    
+    type: type of the term. (REQUIRED) Currently, 3 values are possible:
+    open: open category term
+    close: close category term
+    
+    lemma: lemma of the term (REQUIRED).
+    
+    pos: part of speech. (REQUIRED) The first letter of the pos attribute
+    must be one of the following:
+    
+    N   common noun
+    R   proper noun
+    G   adjective
+    V   verb
+    P   preposition
+    A   adverb
+    C   conjunction
+    D   determiner
+    O   other
+    
+    more complex pos attributes may be formed by concatenating values separated
+    by a dot ".". For example, in Basque we have "V.ADI.SIN" for simple verbs
+    or "V.ADI.KON" for complex verbs.
+    
+    morphofeat: morphosyntactic feature encoded as a single attribute.
+    
+    case: declension case of the term (otpional).
+    
+    head: if the term is a compound, the id of the head component (otpional).
+  -->
+  <define name="term">
+    <element name="term">
+      <ref name="attlist.term"/>
+      <oneOrMore>
+        <choice>
+          <optional>
+            <ref name="sentiment"/>
+          </optional>
+          <ref name="span"/>
+          <ref name="externalReferences"/>
+          <ref name="component"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.term" combine="interleave">
+    <attribute name="id">
+      <data type="ID"/>
+    </attribute>
+    <optional>
+      <attribute name="type"/>
+    </optional>
+    <optional>
+      <attribute name="lemma"/>
+    </optional>
+    <optional>
+      <attribute name="pos"/>
+    </optional>
+    <optional>
+      <attribute name="morphofeat"/>
+    </optional>
+    <optional>
+      <attribute name="netype"/>
+    </optional>
+    <optional>
+      <attribute name="case"/>
+    </optional>
+    <optional>
+      <attribute name="head"/>
+    </optional>
+  </define>
+  <!-- SENTIMENT FEATURES ELEMENTS -->
+  <!--
+    <sentiment> elements have the following sub-element:
+      - Resource: identifier and reference to an external sentiment resource 
+      - Polarity: Refers to the property of a word to express positive, negative or no sentiment. These values are possible: 
+      - Positive
+      - Negative
+      - Neutral
+      - Or numerical value on a numerical scale
+      - Strength: refers to the strength of the polarity
+      - Weak
+      - Average
+      - Strong
+      - Or Numerical value
+      - Subjectivity: refers to the property of a words to express an opionion (or not)
+      - Subjective/Objective
+      - Factual/opinionated
+      - Sentiment_semantic_type: refers to a sentiment-related semantic type
+      - Aesthetics_evaluation
+      - Moral_judgment
+      - Emotion
+      - etc
+      - Sentiment modifier: refers to words which modify  the polarity of another word
+      - Intensifier/weakener polarity shifter
+      - Sentiment_marker: refers to words which themselves do not carry polarity, but are kind of vehicles of it
+      - Find, think, in my opinion, according to....
+      - Sentiment_product_feature: refers to a domain; mainly used in feature-based sentiment analysis
+      - Values are related to specific domain. For the tourist domain, for example, staff, cleanliness, beds, bathroom, transportation, location, etc.. 
+  -->
+  <define name="sentiment">
+    <element name="sentiment">
+      <ref name="attlist.sentiment"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.sentiment" combine="interleave">
+    <optional>
+      <attribute name="resource"/>
+    </optional>
+    <optional>
+      <attribute name="polarity"/>
+    </optional>
+    <optional>
+      <attribute name="strength"/>
+    </optional>
+    <optional>
+      <attribute name="subjectivity"/>
+    </optional>
+    <optional>
+      <attribute name="sentiment_semantic_type"/>
+    </optional>
+    <optional>
+      <attribute name="sentiment_product_feature"/>
+    </optional>
+    <optional>
+      <attribute name="sentiment_modifier"/>
+    </optional>
+    <optional>
+      <attribute name="sentiment_marker"/>
+    </optional>
+  </define>
+  <!-- EXTERNALREFERENCES ELEMENT -->
+  <!--
+    The <externalReferences> element is used to associate terms to
+    external resources, such as elements of a Knowledge base, an ontology,
+    etc. It consists of several <externalRef> elements, one per
+    association.
+  -->
+  <define name="externalReferences">
+    <element name="externalReferences">
+      <ref name="attlist.externalReferences"/>
+      <oneOrMore>
+        <ref name="externalRef"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.externalReferences" combine="interleave">
+    <empty/>
+  </define>
+  <!-- EXTERNALREF ELEMENT -->
+  <!--
+    <externalRef> elements have the following attributes:- resource: indicates the identifier of the resource referred to. 
+      - reference: code of the referred element. If the element is a
+      synset of some version of WordNet, it follows the pattern:
+    
+      [a-z]{3}-[0-9]{2}-[0-9]+-[nvars]
+    
+      which is a string composed by four fields separated by a dash. 
+      The four fields are the following:
+    
+    
+      - Language code (three characters).
+      - WordNet version (two digits).
+      - Synset identifier composed by digits.
+      - POS character:
+      n noun
+      v verb
+      a adjective
+      r adverb
+      examples of valid patterns are: ``ENG-20-12345678-n'', 
+      ``SPA-16-017403-v'', etc.
+      - confidence: a floating number between 0 and 1. Indicates the confidence weight of the association
+  -->
+  <define name="externalRef">
+    <element name="externalRef">
+      <ref name="attlist.externalRef"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="sentiment"/>
+          <ref name="externalRef"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.externalRef" combine="interleave">
+    <optional>
+      <attribute name="resource"/>
+    </optional>
+    <attribute name="reference"/>
+    <optional>
+      <attribute name="reftype"/>
+    </optional>
+    <optional>
+      <attribute name="status"/>
+    </optional>
+    <optional>
+      <attribute name="source"/>
+    </optional>
+    <optional>
+      <attribute name="confidence"/>
+    </optional>
+  </define>
+  <!-- COMPONENT ELEMENT -->
+  <!--
+    Compound and multiword terms can be represented in NAF by including <component> elements within <term> elements.
+    The <component> elements have the following attributes:
+    -   id: unique identifier (REQUIRED and UNIQUE)
+    -   lemma: lemma of the term (REQUIRED)
+    -   pos: part of speech (REQUIRED)
+    -   case: declension case (optional) 
+    
+  -->
+  <define name="component">
+    <element name="component">
+      <ref name="attlist.component"/>
+      <oneOrMore>
+        <choice>
+          <optional>
+            <ref name="sentiment"/>
+          </optional>
+          <ref name="span"/>
+          <ref name="externalReferences"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.component" combine="interleave">
+    <attribute name="id">
+      <data type="ID"/>
+    </attribute>
+    <optional>
+      <attribute name="type"/>
+    </optional>
+    <optional>
+      <attribute name="lemma"/>
+    </optional>
+    <optional>
+      <attribute name="pos"/>
+    </optional>
+    <optional>
+      <attribute name="morphofeat"/>
+    </optional>
+    <optional>
+      <attribute name="netype"/>
+    </optional>
+    <optional>
+      <attribute name="case"/>
+    </optional>
+    <optional>
+      <attribute name="head"/>
+    </optional>
+  </define>
+  <!-- MARKABLES ELEMENT -->
+  <define name="markables">
+    <element name="markables">
+      <ref name="attlist.markables"/>
+      <oneOrMore>
+        <ref name="mark"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.markables" combine="interleave">
+    <empty/>
+  </define>
+  <define name="mark">
+    <element name="mark">
+      <ref name="attlist.mark"/>
+      <oneOrMore>
+        <choice>
+          <optional>
+            <ref name="sentiment"/>
+          </optional>
+          <ref name="span"/>
+          <ref name="externalReferences"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.mark" combine="interleave">
+    <attribute name="id">
+      <data type="ID"/>
+    </attribute>
+    <optional>
+      <attribute name="type"/>
+    </optional>
+    <optional>
+      <attribute name="lemma"/>
+    </optional>
+    <optional>
+      <attribute name="pos"/>
+    </optional>
+    <optional>
+      <attribute name="morphofeat"/>
+    </optional>
+    <optional>
+      <attribute name="case"/>
+    </optional>
+    <optional>
+      <attribute name="source"/>
+    </optional>
+  </define>
+  <!-- DEPS ELEMENT -->
+  <define name="deps">
+    <element name="deps">
+      <ref name="attlist.deps"/>
+      <oneOrMore>
+        <ref name="dep"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.deps" combine="interleave">
+    <empty/>
+  </define>
+  <!-- DEP ELEMENT -->
+  <!--
+    The <dep> elements have the following attributes:
+    -   from: term id of the source element (REQUIRED)
+    -   to: term id of the target element (REQUIRED)
+    -   rfunc: relational function.(REQUIRED)
+    -       case: declension case (optional)
+  -->
+  <define name="dep">
+    <element name="dep">
+      <ref name="attlist.dep"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.dep" combine="interleave">
+    <attribute name="from">
+      <data type="IDREF"/>
+    </attribute>
+    <attribute name="to">
+      <data type="IDREF"/>
+    </attribute>
+    <attribute name="rfunc"/>
+    <optional>
+      <attribute name="case"/>
+    </optional>
+  </define>
+  <!-- CHUNKS ELEMENT -->
+  <define name="chunks">
+    <element name="chunks">
+      <ref name="attlist.chunks"/>
+      <oneOrMore>
+        <ref name="chunk"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.chunks" combine="interleave">
+    <empty/>
+  </define>
+  <!-- CHUNK ELEMENT -->
+  <!--
+    The <chunk> elements have the following attributes:
+    -   id: unique identifier (REQUIRED)
+    -   head: the chunk head’s term id  (REQUIRED)
+    -   phrase: type of the phrase (REQUIRED)
+    -   case: declension case (optional)
+  -->
+  <define name="chunk">
+    <element name="chunk">
+      <ref name="attlist.chunk"/>
+      <oneOrMore>
+        <ref name="span"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.chunk" combine="interleave">
+    <attribute name="id">
+      <data type="ID"/>
+    </attribute>
+    <attribute name="head">
+      <data type="IDREF"/>
+    </attribute>
+    <attribute name="phrase"/>
+    <optional>
+      <attribute name="case"/>
+    </optional>
+  </define>
+  <!-- ENTITIES ELEMENT -->
+  <define name="entities">
+    <element name="entities">
+      <ref name="attlist.entities"/>
+      <oneOrMore>
+        <ref name="entity"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.entities" combine="interleave">
+    <empty/>
+  </define>
+  <!-- ENTITY ELEMENT -->
+  <!--
+    A named entity element has the following attributes: 
+    -   id: the id for the named entity (REQUIRED)
+    -   type:  type of the named entity. (REQUIRED) Currently, 8 values are possible: 
+    -   Person
+    -   Organization
+    -   Location
+    -   Date
+    -   Time
+    -   Money
+    -   Percent
+    -   Misc 
+  -->
+  <define name="entity">
+    <element name="entity">
+      <ref name="attlist.entity"/>
+      <oneOrMore>
+        <choice>
+          <ref name="references"/>
+          <ref name="externalReferences"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.entity" combine="interleave">
+    <attribute name="id">
+      <data type="ID"/>
+    </attribute>
+    <attribute name="type"/>
+    <optional>
+      <attribute name="source"/>
+    </optional>
+  </define>
+  <!-- COREFERENCES ELEMENT -->
+  <define name="coreferences">
+    <element name="coreferences">
+      <ref name="attlist.coreferences"/>
+      <oneOrMore>
+        <ref name="coref"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.coreferences" combine="interleave">
+    <empty/>
+  </define>
+  <!-- COREF ELEMENT -->
+  <!--
+    <coref> element has the following attribute:
+      - id: unique id, starting with the prefix "co"
+      -       type: type of the coref set (entity, event, etc)
+  -->
+  <define name="coref">
+    <element name="coref">
+      <ref name="attlist.coref"/>
+      <oneOrMore>
+        <choice>
+          <ref name="span"/>
+          <ref name="externalReferences"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.coref" combine="interleave">
+    <attribute name="id">
+      <data type="ID"/>
+    </attribute>
+    <optional>
+      <attribute name="type"/>
+    </optional>
+  </define>
+  <!-- CONSITUENCY PARSING -->
+  <define name="constituency">
+    <element name="constituency">
+      <ref name="attlist.constituency"/>
+      <oneOrMore>
+        <ref name="tree"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.constituency" combine="interleave">
+    <empty/>
+  </define>
+  <define name="tree">
+    <element name="tree">
+      <ref name="attlist.tree"/>
+      <oneOrMore>
+        <choice>
+          <ref name="nt"/>
+          <ref name="t"/>
+          <ref name="edge"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.tree" combine="interleave">
+    <optional>
+      <attribute name="type"/>
+    </optional>
+  </define>
+  <define name="nt">
+    <element name="nt">
+      <ref name="attlist.nt"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.nt" combine="interleave">
+    <attribute name="id">
+      <data type="ID"/>
+    </attribute>
+    <attribute name="label"/>
+  </define>
+  <define name="t">
+    <element name="t">
+      <ref name="attlist.t"/>
+      <ref name="span"/>
+    </element>
+  </define>
+  <define name="attlist.t" combine="interleave">
+    <attribute name="id">
+      <data type="ID"/>
+    </attribute>
+  </define>
+  <define name="edge">
+    <element name="edge">
+      <ref name="attlist.edge"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.edge" combine="interleave">
+    <optional>
+      <attribute name="id">
+        <data type="ID"/>
+      </attribute>
+    </optional>
+    <attribute name="from">
+      <data type="IDREF"/>
+    </attribute>
+    <attribute name="to">
+      <data type="IDREF"/>
+    </attribute>
+    <optional>
+      <attribute name="head"/>
+    </optional>
+  </define>
+  <!-- SEMANTIC ROLE LABELING -->
+  <define name="srl">
+    <element name="srl">
+      <ref name="attlist.srl"/>
+      <oneOrMore>
+        <ref name="predicate"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.srl" combine="interleave">
+    <empty/>
+  </define>
+  <define name="predicate">
+    <element name="predicate">
+      <ref name="attlist.predicate"/>
+      <oneOrMore>
+        <choice>
+          <ref name="externalReferences"/>
+          <ref name="span"/>
+          <ref name="role"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.predicate" combine="interleave">
+    <attribute name="id">
+      <data type="ID"/>
+    </attribute>
+    <optional>
+      <attribute name="uri"/>
+    </optional>
+    <optional>
+      <attribute name="confidence"/>
+    </optional>
+  </define>
+  <define name="role">
+    <element name="role">
+      <ref name="attlist.role"/>
+      <oneOrMore>
+        <choice>
+          <ref name="externalReferences"/>
+          <ref name="span"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.role" combine="interleave">
+    <attribute name="id">
+      <data type="ID"/>
+    </attribute>
+    <optional>
+      <attribute name="uri"/>
+    </optional>
+    <optional>
+      <attribute name="confidence"/>
+    </optional>
+    <attribute name="semRole"/>
+  </define>
+  <!-- OPINIONS ELEMENT -->
+  <define name="opinions">
+    <element name="opinions">
+      <ref name="attlist.opinions"/>
+      <oneOrMore>
+        <ref name="opinion"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.opinions" combine="interleave">
+    <empty/>
+  </define>
+  <!-- OPINION ELEMENT -->
+  <!--
+    The <opinion> layer has one attribute: 
+    -   id:  the unique identifier of the opinion
+    
+    The <opinion> layer consists of the following subelement:
+    -   opinion_holder:  whose opinion: speaker or some actor in the text
+    -   opinion _target :  about what
+    -   opinion_expression: the expression
+    
+  -->
+  <define name="opinion">
+    <element name="opinion">
+      <ref name="attlist.opinion"/>
+      <oneOrMore>
+        <choice>
+          <ref name="opinion_holder"/>
+          <ref name="opinion_target"/>
+          <ref name="opinion_expression"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.opinion" combine="interleave">
+    <attribute name="id">
+      <data type="ID"/>
+    </attribute>
+  </define>
+  <!-- OPINION_HOLDER AND OPINION_TARGET ELEMENT -->
+  <!--
+    <opinion_holder> and <opinion_target> elements have the following sub-element:
+        -   span: this element spans the target  term. Target elements are used to refer to the target term,, using term ids. If the term is a multiword, multiple target elements are used.
+  -->
+  <define name="opinion_holder">
+    <element name="opinion_holder">
+      <ref name="attlist.opinion_holder"/>
+      <oneOrMore>
+        <ref name="span"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.opinion_holder" combine="interleave">
+    <optional>
+      <attribute name="type"/>
+    </optional>
+  </define>
+  <define name="opinion_target">
+    <element name="opinion_target">
+      <ref name="attlist.opinion_target"/>
+      <oneOrMore>
+        <ref name="span"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.opinion_target" combine="interleave">
+    <optional>
+      <attribute name="type"/>
+    </optional>
+  </define>
+  <!-- OPINION_EXPRESSION -->
+  <!--
+    <opinion_expression> has the following attributes:
+      - polarity:  refers to the positive or negative orientation of the expression
+      - strength:  refers to the strength of the expression
+      - subjectivity:  refers to whether an expression is subjective or not
+      - sentiment_semantic_type:  refers to sentiment related semantic types like emotion, judgment, belief, speculation
+      - sentiment_product_feature :  refers to specific features of entities, to be used in feature/aspect-based sentiment analysis
+  -->
+  <define name="opinion_expression">
+    <element name="opinion_expression">
+      <ref name="attlist.opinion_expression"/>
+      <oneOrMore>
+        <ref name="span"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.opinion_expression" combine="interleave">
+    <optional>
+      <attribute name="polarity"/>
+    </optional>
+    <optional>
+      <attribute name="strength"/>
+    </optional>
+    <optional>
+      <attribute name="subjectivity"/>
+    </optional>
+    <optional>
+      <attribute name="sentiment_semantic_type"/>
+    </optional>
+    <optional>
+      <attribute name="sentiment_product_feature"/>
+    </optional>
+  </define>
+  <define name="timeExpressions">
+    <element name="timeExpressions">
+      <ref name="attlist.timeExpressions"/>
+      <zeroOrMore>
+        <ref name="timex3"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.timeExpressions" combine="interleave">
+    <empty/>
+  </define>
+  <!-- timex3 expressions -->
+  <define name="timex3">
+    <element name="timex3">
+      <ref name="attlist.timex3"/>
+      <zeroOrMore>
+        <ref name="span"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.timex3" combine="interleave">
+    <attribute name="id">
+      <data type="ID"/>
+    </attribute>
+    <attribute name="type"/>
+    <optional>
+      <attribute name="beginPoint">
+        <data type="IDREF"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="endPoint">
+        <data type="IDREF"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="quant"/>
+    </optional>
+    <optional>
+      <attribute name="freq"/>
+    </optional>
+    <optional>
+      <attribute name="functionInDocument"/>
+    </optional>
+    <optional>
+      <attribute name="temporalFunction"/>
+    </optional>
+    <optional>
+      <attribute name="value"/>
+    </optional>
+    <optional>
+      <attribute name="valueFromFunction"/>
+    </optional>
+    <optional>
+      <attribute name="mod"/>
+    </optional>
+    <optional>
+      <attribute name="anchorTimeID">
+        <data type="IDREF"/>
+      </attribute>
+    </optional>
+  </define>
+  <!-- time relations -->
+  <define name="temporalRelations">
+    <element name="temporalRelations">
+      <ref name="attlist.temporalRelations"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="tlink"/>
+          <ref name="predicateAnchor"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.temporalRelations" combine="interleave">
+    <empty/>
+  </define>
+  <define name="tlink">
+    <element name="tlink">
+      <ref name="attlist.tlink"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.tlink" combine="interleave">
+    <attribute name="id">
+      <data type="ID"/>
+    </attribute>
+    <attribute name="from">
+      <data type="IDREF"/>
+    </attribute>
+    <attribute name="to">
+      <data type="IDREF"/>
+    </attribute>
+    <attribute name="fromType"/>
+    <attribute name="toType"/>
+    <attribute name="relType"/>
+  </define>
+  <define name="predicateAnchor">
+    <element name="predicateAnchor">
+      <ref name="attlist.predicateAnchor"/>
+      <oneOrMore>
+        <ref name="span"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.predicateAnchor" combine="interleave">
+    <optional>
+      <attribute name="id">
+        <data type="ID"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="anchorTime">
+        <data type="IDREF"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="beginPoint">
+        <data type="IDREF"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="endPoint">
+        <data type="IDREF"/>
+      </attribute>
+    </optional>
+  </define>
+  <!-- causal relations -->
+  <define name="causalRelations">
+    <element name="causalRelations">
+      <ref name="attlist.causalRelations"/>
+      <zeroOrMore>
+        <ref name="clink"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.causalRelations" combine="interleave">
+    <empty/>
+  </define>
+  <define name="clink">
+    <element name="clink">
+      <ref name="attlist.clink"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.clink" combine="interleave">
+    <attribute name="id">
+      <data type="ID"/>
+    </attribute>
+    <attribute name="from">
+      <data type="IDREF"/>
+    </attribute>
+    <attribute name="to">
+      <data type="IDREF"/>
+    </attribute>
+    <optional>
+      <attribute name="relType"/>
+    </optional>
+  </define>
+  <!-- attribution layer -->
+  <define name="attribution">
+    <element name="attribution">
+      <ref name="attlist.attribution"/>
+      <oneOrMore>
+        <ref name="statement"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.attribution" combine="interleave">
+    <empty/>
+  </define>
+  <define name="statement">
+    <element name="statement">
+      <ref name="attlist.statement"/>
+      <oneOrMore>
+        <choice>
+          <ref name="statement_target"/>
+          <ref name="statement_source"/>
+          <ref name="statement_cue"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.statement" combine="interleave">
+    <attribute name="id">
+      <data type="ID"/>
+    </attribute>
+  </define>
+  <define name="statement_target">
+    <element name="statement_target">
+      <ref name="attlist.statement_target"/>
+      <ref name="span"/>
+    </element>
+  </define>
+  <define name="attlist.statement_target" combine="interleave">
+    <empty/>
+  </define>
+  <define name="statement_source">
+    <element name="statement_source">
+      <ref name="attlist.statement_source"/>
+      <ref name="span"/>
+    </element>
+  </define>
+  <define name="attlist.statement_source" combine="interleave">
+    <empty/>
+  </define>
+  <define name="statement_cue">
+    <element name="statement_cue">
+      <ref name="attlist.statement_cue"/>
+      <ref name="span"/>
+    </element>
+  </define>
+  <define name="attlist.statement_cue" combine="interleave">
+    <empty/>
+  </define>
+  <!-- factuality layer -->
+  <define name="factualities">
+    <element name="factualities">
+      <ref name="attlist.factualities"/>
+      <oneOrMore>
+        <ref name="factuality"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.factualities" combine="interleave">
+    <empty/>
+  </define>
+  <define name="attlist.factuality" combine="interleave">
+    <attribute name="id">
+      <data type="ID"/>
+    </attribute>
+  </define>
+  <define name="factuality">
+    <element name="factuality">
+      <ref name="attlist.factuality"/>
+      <ref name="span"/>
+      <oneOrMore>
+        <ref name="factVal"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="factVal">
+    <element name="factVal">
+      <ref name="attlist.factVal"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.factVal" combine="interleave">
+    <attribute name="value"/>
+    <attribute name="resource"/>
+    <optional>
+      <attribute name="confidence"/>
+    </optional>
+    <optional>
+      <attribute name="source"/>
+    </optional>
+  </define>
+  <!-- factuality layer (old) -->
+  <define name="factualitylayer">
+    <element name="factualitylayer">
+      <ref name="attlist.factualitylayer"/>
+      <oneOrMore>
+        <ref name="factvalue"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.factualitylayer" combine="interleave">
+    <empty/>
+  </define>
+  <define name="factvalue">
+    <element name="factvalue">
+      <ref name="attlist.factvalue"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.factvalue" combine="interleave">
+    <attribute name="id">
+      <data type="IDREF"/>
+    </attribute>
+    <attribute name="prediction"/>
+    <optional>
+      <attribute name="confidence"/>
+    </optional>
+  </define>
+  <!-- REFERENCES AND SPANS -->
+  <!--  REFERENCES ELEMENT (only used in Entity layer) -->
+  <define name="references">
+    <element name="references">
+      <ref name="attlist.references"/>
+      <oneOrMore>
+        <ref name="span"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.references" combine="interleave">
+    <empty/>
+  </define>
+  <!-- SPAN ELEMENT -->
+  <define name="span">
+    <element name="span">
+      <ref name="attlist.span"/>
+      <oneOrMore>
+        <ref name="target"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.span" combine="interleave">
+    <optional>
+      <attribute name="primary"/>
+    </optional>
+  </define>
+  <!-- TARGET ELEMENT -->
+  <define name="target">
+    <element name="target">
+      <ref name="attlist.target"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.target" combine="interleave">
+    <attribute name="id">
+      <data type="IDREF"/>
+    </attribute>
+    <optional>
+      <attribute name="head"/>
+    </optional>
+  </define>
+  <define name="tunits">
+    <element name="tunits">
+      <ref name="attlist.tunits"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="tunit"/>
+          <text/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.tunits" combine="interleave">
+    <optional>
+      <attribute name="id"/>
+    </optional>
+  </define>
+  <define name="tunit">
+    <element name="tunit">
+      <ref name="attlist.tunit"/>
+    </element>
+  </define>
+  <define name="attlist.tunit" combine="interleave">
+    <attribute name="id"/>
+    <attribute name="offset"/>
+    <attribute name="length"/>
+    <optional>
+      <attribute name="class"/>
+    </optional>
+  </define>
+  <define name="locations">
+    <element name="locations">
+      <ref name="attlist.locations"/>
+      <zeroOrMore>
+        <text/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.locations" combine="interleave">
+    <empty/>
+  </define>
+  <define name="dates">
+    <element name="dates">
+      <ref name="attlist.dates"/>
+      <zeroOrMore>
+        <text/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.dates" combine="interleave">
+    <empty/>
+  </define>
+  <start>
+    <ref name="NAF"/>
+  </start>
+</grammar>
+<!-- OLD ELEMENTS DEPRECATED -->
+<!--
+  <!ELEMENT events (event)+>
+  <!ELEMENT event (roles)+>
+  <!ATTLIST event
+            id ID #REQUIRED
+            span IDREF #REQUIRED
+            lemma CDATA #REQUIRED
+            pos CDATA #REQUIRED
+            eiid CDATA #IMPLIED
+            class CDATA #IMPLIED
+            tense CDATA #IMPLIED
+            aspect CDATA #IMPLIED
+            polarity CDATA #IMPLIED>
+  
+  <!ELEMENT roles (role)+>
+  <!ELEMENT role EMPTY>
+  <!ATTLIST role
+            id IDREF #REQUIRED
+            role CDATA #REQUIRED>
+  
+  <!ELEMENT quantifiers (quantifier)+>
+  <!ELEMENT quantifier (span)+>
+  <!ATTLIST quantifier
+            qid ID #REQUIRED>
+  
+-->

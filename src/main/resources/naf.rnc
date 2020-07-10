@@ -1,0 +1,597 @@
+# DTD NAF
+
+NAF =
+  element NAF {
+    attlist.NAF,
+    (nafHeader
+     | raw
+     | topics
+     | \text
+     | terms
+     | deps
+     | chunks
+     | entities
+     | coreferences
+     | constituency
+     | srl
+     | opinions
+     | timeExpressions
+     | factualitylayer
+     | tunits
+     | locations
+     | dates
+     | temporalRelations
+     | causalRelations
+     | markables
+     | attribution
+     | factualities)*
+  }
+# NAF ELEMENT
+attlist.NAF &=
+  attribute doc { text }?,
+  attribute version { text }?,
+  attribute xml:lang { text }?
+# NAFHEADER ELEMENT
+nafHeader =
+  element nafHeader {
+    attlist.nafHeader, fileDesc?, public?, linguisticProcessors*
+  }
+attlist.nafHeader &= empty
+# FILEDESC ELEMENT
+
+# <fileDesc> is an empty element containing information about the
+#   computer document itself. It has the following attributes:
+# 
+#   - title: the title of the document (optional).
+#   - author: the author of the document (optional).
+#   - creationtime: when the document was created. In ISO 8601. (optional)
+#   - filename: the original file name (optional).
+#   - filetype: the original format (PDF, HTML, DOC, etc) (optional).
+#   - pages: number of pages of the original document (optional).
+fileDesc = element fileDesc { attlist.fileDesc, empty }
+attlist.fileDesc &=
+  attribute title { text }?,
+  attribute author { text }?,
+  attribute creationtime { text }?,
+  attribute filename { text }?,
+  attribute filetype { text }?,
+  attribute pages { text }?
+# PUBLIC ELEMENT
+
+# <public> is an empty element which stores public information about
+#   the document, such as its URI. It has the following attributes:
+# 
+#   - publicId: a public identifier (for instance, the number inserted by the capture server) (optional).
+#   - uri: a public URI of the document (optional).
+#
+public = element public { attlist.public, empty }
+attlist.public &=
+  attribute publicId { text }?,
+  attribute uri { text }?
+# LINGUISTICPROCESSORS ELEMENT
+
+# <linguisticProcessors> elements store the information about which linguistic processors
+#   produced the NAF document. There can be several <linguisticProcessors> elements, one
+#     per NAF layer. NAF layers correspond to the top-level elements of the
+#     documents, such as "text", "terms", "deps" etc.
+#
+linguisticProcessors =
+  element linguisticProcessors { attlist.linguisticProcessors, lp+ }
+attlist.linguisticProcessors &= attribute layer { text }
+# LP ELEMENT
+
+# <lp> elements describe one specific linguistic processor. <lp> elements 
+#     have the following attributes:
+# 
+#     - name: the name of the processor
+#     - version: processor's version
+#     - timestamp: a timestamp, denoting the date/time at which the processor was
+#     launched. The timestamp follows the XML Schema xs:dateTime type (See
+#     http://www.w3.org/TR/xmlschema-2/#isoformats). In summary, the date is
+#     specified following the form "YYYY-MM-DDThh:mm:ss" (all fields
+#     required). To specify a time zone, you can either enter a dateTime in UTC
+#     time by adding a "Z" behind the time ("2002-05-30T09:00:00Z") or you can
+#     specify an offset from the UTC time by adding a positive or negative time
+#     behind the time ("2002-05-30T09:00:00+06:00").
+#     - beginTimestamp (optional): a timestamp, denoting the date/time at
+#     which the processor started the process. It follows the XML Schema
+#     xs:dateTime format.
+#     - endTimestamp (optional): a timestamp, denoting the date/time at
+#     which the processor ended the process. It follows the XML Schema
+#     xs:dateTime format.
+#
+lp = element lp { attlist.lp, empty }
+attlist.lp &=
+  attribute name { text },
+  attribute version { text },
+  attribute timestamp { text }?,
+  attribute beginTimestamp { text }?,
+  attribute endTimestamp { text }?,
+  attribute hostname { text }?
+# RAW ELEMENT
+raw = element raw { attlist.raw, text }
+attlist.raw &=  attribute id { text }?
+# TOPICS ELEMENT
+topics = element topics { attlist.topics, topic+ }
+attlist.topics &= empty
+# TOPIC ELEMENT
+topic = element topic { attlist.topic, text }
+attlist.topic &=
+  attribute source { text }?,
+  attribute method { text }?,
+  attribute confidence { text }?,
+  attribute uri { text }?
+# TEXT ELEMENT
+\text = element text { attlist.text, wf+ }
+attlist.text &= attribute id { text }?
+# WORDFORM ELEMENT
+
+# <wf> elements describe and contain all word foorms generated after the tokenization step
+#   <wf> elements have the following attributes:
+#     - id: the id of the word form (REQUIRED and UNIQUE)
+#     - sent: sentence id of the word form (optional)
+#     - para: paragraph id of the word form (optional)
+#     - page: page id of the word form (optional)
+#     - offset: the offset (in characters) of the word form (optional)
+#     - length: the length (in characters) of the word form (optional)
+#     - xpath: in case of source xml files, the xpath expression identifying the original word form (optional)
+#
+wf = element wf { attlist.wf, text }
+attlist.wf &=
+  attribute id { xsd:ID },
+  attribute sent { text }?,
+  attribute para { text }?,
+  attribute page { text }?,
+  attribute offset { text },
+  attribute length { text },
+  attribute xpath { text }?
+# TERMS ELEMENT
+terms = element terms { attlist.terms, term+ }
+attlist.terms &= attribute id { text }?
+# TERM ELEMENT
+
+# attributes of term elements
+# 
+# id: unique identifier (REQUIRED AND UNIQUE)
+# 
+# type: type of the term. (REQUIRED) Currently, 3 values are possible:
+# open: open category term
+# close: close category term
+# 
+# lemma: lemma of the term (REQUIRED).
+# 
+# pos: part of speech. (REQUIRED) The first letter of the pos attribute
+# must be one of the following:
+# 
+# N   common noun
+# R   proper noun
+# G   adjective
+# V   verb
+# P   preposition
+# A   adverb
+# C   conjunction
+# D   determiner
+# O   other
+# 
+# more complex pos attributes may be formed by concatenating values separated
+# by a dot ".". For example, in Basque we have "V.ADI.SIN" for simple verbs
+# or "V.ADI.KON" for complex verbs.
+# 
+# morphofeat: morphosyntactic feature encoded as a single attribute.
+# 
+# case: declension case of the term (otpional).
+# 
+# head: if the term is a compound, the id of the head component (otpional).
+term =
+  element term {
+    attlist.term, (sentiment? | span | externalReferences | component)+
+  }
+attlist.term &=
+  attribute id { xsd:ID },
+  attribute type { text }?,
+  attribute lemma { text }?,
+  attribute pos { text }?,
+  attribute morphofeat { text }?,
+  attribute netype { text }?,
+  attribute case { text }?,
+  attribute head { text }?
+# SENTIMENT FEATURES ELEMENTS
+
+# <sentiment> elements have the following sub-element:
+#   - Resource: identifier and reference to an external sentiment resource 
+#   - Polarity: Refers to the property of a word to express positive, negative or no sentiment. These values are possible: 
+#   - Positive
+#   - Negative
+#   - Neutral
+#   - Or numerical value on a numerical scale
+#   - Strength: refers to the strength of the polarity
+#   - Weak
+#   - Average
+#   - Strong
+#   - Or Numerical value
+#   - Subjectivity: refers to the property of a words to express an opionion (or not)
+#   - Subjective/Objective
+#   - Factual/opinionated
+#   - Sentiment_semantic_type: refers to a sentiment-related semantic type
+#   - Aesthetics_evaluation
+#   - Moral_judgment
+#   - Emotion
+#   - etc
+#   - Sentiment modifier: refers to words which modify  the polarity of another word
+#   - Intensifier/weakener polarity shifter
+#   - Sentiment_marker: refers to words which themselves do not carry polarity, but are kind of vehicles of it
+#   - Find, think, in my opinion, according to....
+#   - Sentiment_product_feature: refers to a domain; mainly used in feature-based sentiment analysis
+#   - Values are related to specific domain. For the tourist domain, for example, staff, cleanliness, beds, bathroom, transportation, location, etc.. 
+sentiment = element sentiment { attlist.sentiment, empty }
+attlist.sentiment &=
+  attribute resource { text }?,
+  attribute polarity { text }?,
+  attribute strength { text }?,
+  attribute subjectivity { text }?,
+  attribute sentiment_semantic_type { text }?,
+  attribute sentiment_product_feature { text }?,
+  attribute sentiment_modifier { text }?,
+  attribute sentiment_marker { text }?
+# EXTERNALREFERENCES ELEMENT
+
+# The <externalReferences> element is used to associate terms to
+# external resources, such as elements of a Knowledge base, an ontology,
+# etc. It consists of several <externalRef> elements, one per
+# association.
+externalReferences =
+  element externalReferences {
+    attlist.externalReferences, externalRef+
+  }
+attlist.externalReferences &= empty
+# EXTERNALREF ELEMENT
+
+# <externalRef> elements have the following attributes:- resource: indicates the identifier of the resource referred to. 
+#   - reference: code of the referred element. If the element is a
+#   synset of some version of WordNet, it follows the pattern:
+# 
+#   [a-z]{3}-[0-9]{2}-[0-9]+-[nvars]
+# 
+#   which is a string composed by four fields separated by a dash. 
+#   The four fields are the following:
+# 
+# 
+#   - Language code (three characters).
+#   - WordNet version (two digits).
+#   - Synset identifier composed by digits.
+#   - POS character:
+#   n noun
+#   v verb
+#   a adjective
+#   r adverb
+#   examples of valid patterns are: ``ENG-20-12345678-n'', 
+#   ``SPA-16-017403-v'', etc.
+#   - confidence: a floating number between 0 and 1. Indicates the confidence weight of the association
+externalRef =
+  element externalRef {
+    attlist.externalRef, (sentiment | externalRef)*
+  }
+attlist.externalRef &=
+  attribute resource { text }?,
+  attribute reference { text },
+  attribute reftype { text }?,
+  attribute status { text }?,
+  attribute source { text }?,
+  attribute confidence { text }?
+# COMPONENT ELEMENT
+
+# Compound and multiword terms can be represented in NAF by including <component> elements within <term> elements.
+# The <component> elements have the following attributes:
+# -   id: unique identifier (REQUIRED and UNIQUE)
+# -   lemma: lemma of the term (REQUIRED)
+# -   pos: part of speech (REQUIRED)
+# -   case: declension case (optional) 
+#
+component =
+  element component {
+    attlist.component, (sentiment? | span | externalReferences)+
+  }
+attlist.component &=
+  attribute id { xsd:ID },
+  attribute type { text }?,
+  attribute lemma { text }?,
+  attribute pos { text }?,
+  attribute morphofeat { text }?,
+  attribute netype { text }?,
+  attribute case { text }?,
+  attribute head { text }?
+# MARKABLES ELEMENT
+markables = element markables { attlist.markables, mark+ }
+attlist.markables &= empty
+mark =
+  element mark {
+    attlist.mark, (sentiment? | span | externalReferences)+
+  }
+attlist.mark &=
+  attribute id { xsd:ID },
+  attribute type { text }?,
+  attribute lemma { text }?,
+  attribute pos { text }?,
+  attribute morphofeat { text }?,
+  attribute case { text }?,
+  attribute source { text }?
+# DEPS ELEMENT
+deps = element deps { attlist.deps, dep+ }
+attlist.deps &= empty
+# DEP ELEMENT
+
+# The <dep> elements have the following attributes:
+# -   from: term id of the source element (REQUIRED)
+# -   to: term id of the target element (REQUIRED)
+# -   rfunc: relational function.(REQUIRED)
+# -       case: declension case (optional)
+dep = element dep { attlist.dep, empty }
+attlist.dep &=
+  attribute from { xsd:IDREF },
+  attribute to { xsd:IDREF },
+  attribute rfunc { text },
+  attribute case { text }?
+# CHUNKS ELEMENT
+chunks = element chunks { attlist.chunks, chunk+ }
+attlist.chunks &= empty
+# CHUNK ELEMENT
+
+# The <chunk> elements have the following attributes:
+# -   id: unique identifier (REQUIRED)
+# -   head: the chunk head’s term id  (REQUIRED)
+# -   phrase: type of the phrase (REQUIRED)
+# -   case: declension case (optional)
+chunk = element chunk { attlist.chunk, span+ }
+attlist.chunk &=
+  attribute id { xsd:ID },
+  attribute head { xsd:IDREF },
+  attribute phrase { text },
+  attribute case { text }?
+# ENTITIES ELEMENT
+entities = element entities { attlist.entities, entity+ }
+attlist.entities &= empty
+# ENTITY ELEMENT
+
+# A named entity element has the following attributes: 
+# -   id: the id for the named entity (REQUIRED)
+# -   type:  type of the named entity. (REQUIRED) Currently, 8 values are possible: 
+# -   Person
+# -   Organization
+# -   Location
+# -   Date
+# -   Time
+# -   Money
+# -   Percent
+# -   Misc 
+entity =
+  element entity { attlist.entity, (references | externalReferences)+ }
+attlist.entity &=
+  attribute id { xsd:ID },
+  attribute type { text },
+  attribute source { text }?
+# COREFERENCES ELEMENT
+coreferences = element coreferences { attlist.coreferences, coref+ }
+attlist.coreferences &= empty
+# COREF ELEMENT
+
+# <coref> element has the following attribute:
+#   - id: unique id, starting with the prefix "co"
+#   -       type: type of the coref set (entity, event, etc)
+coref = element coref { attlist.coref, (span | externalReferences)+ }
+attlist.coref &=
+  attribute id { xsd:ID },
+  attribute type { text }?
+# CONSITUENCY PARSING
+constituency = element constituency { attlist.constituency, tree+ }
+attlist.constituency &= empty
+tree = element tree { attlist.tree, (nt | t | edge)+ }
+attlist.tree &= attribute type { text }?
+nt = element nt { attlist.nt, empty }
+attlist.nt &=
+  attribute id { xsd:ID },
+  attribute label { text }
+t = element t { attlist.t, span }
+attlist.t &= attribute id { xsd:ID }
+edge = element edge { attlist.edge, empty }
+attlist.edge &=
+  attribute id { xsd:ID }?,
+  attribute from { xsd:IDREF },
+  attribute to { xsd:IDREF },
+  attribute head { text }?
+# SEMANTIC ROLE LABELING
+srl = element srl { attlist.srl, predicate+ }
+attlist.srl &= empty
+predicate =
+  element predicate {
+    attlist.predicate, (externalReferences | span | role)+
+  }
+attlist.predicate &=
+  attribute id { xsd:ID },
+  attribute uri { text }?,
+  attribute confidence { text }?
+role = element role { attlist.role, (externalReferences | span)+ }
+attlist.role &=
+  attribute id { xsd:ID },
+  attribute uri { text }?,
+  attribute confidence { text }?,
+  attribute semRole { text }
+# OPINIONS ELEMENT
+opinions = element opinions { attlist.opinions, opinion+ }
+attlist.opinions &= empty
+# OPINION ELEMENT
+
+# The <opinion> layer has one attribute: 
+# -   id:  the unique identifier of the opinion
+# 
+# The <opinion> layer consists of the following subelement:
+# -   opinion_holder:  whose opinion: speaker or some actor in the text
+# -   opinion _target :  about what
+# -   opinion_expression: the expression
+#
+opinion =
+  element opinion {
+    attlist.opinion,
+    (opinion_holder | opinion_target | opinion_expression)+
+  }
+attlist.opinion &= attribute id { xsd:ID }
+# OPINION_HOLDER AND OPINION_TARGET ELEMENT
+
+# <opinion_holder> and <opinion_target> elements have the following sub-element:
+#     -   span: this element spans the target  term. Target elements are used to refer to the target term,, using term ids. If the term is a multiword, multiple target elements are used.
+opinion_holder =
+  element opinion_holder { attlist.opinion_holder, span+ }
+attlist.opinion_holder &= attribute type { text }?
+opinion_target =
+  element opinion_target { attlist.opinion_target, span+ }
+attlist.opinion_target &= attribute type { text }?
+# OPINION_EXPRESSION
+
+# <opinion_expression> has the following attributes:
+#   - polarity:  refers to the positive or negative orientation of the expression
+#   - strength:  refers to the strength of the expression
+#   - subjectivity:  refers to whether an expression is subjective or not
+#   - sentiment_semantic_type:  refers to sentiment related semantic types like emotion, judgment, belief, speculation
+#   - sentiment_product_feature :  refers to specific features of entities, to be used in feature/aspect-based sentiment analysis
+opinion_expression =
+  element opinion_expression { attlist.opinion_expression, span+ }
+attlist.opinion_expression &=
+  attribute polarity { text }?,
+  attribute strength { text }?,
+  attribute subjectivity { text }?,
+  attribute sentiment_semantic_type { text }?,
+  attribute sentiment_product_feature { text }?
+timeExpressions =
+  element timeExpressions { attlist.timeExpressions, timex3* }
+attlist.timeExpressions &= empty
+# timex3 expressions
+timex3 = element timex3 { attlist.timex3, span* }
+attlist.timex3 &=
+  attribute id { xsd:ID },
+  attribute type { text },
+  attribute beginPoint { xsd:IDREF }?,
+  attribute endPoint { xsd:IDREF }?,
+  attribute quant { text }?,
+  attribute freq { text }?,
+  attribute functionInDocument { text }?,
+  attribute temporalFunction { text }?,
+  attribute value { text }?,
+  attribute valueFromFunction { text }?,
+  attribute mod { text }?,
+  attribute anchorTimeID { xsd:IDREF }?
+# time relations
+temporalRelations =
+  element temporalRelations {
+    attlist.temporalRelations, (tlink | predicateAnchor)*
+  }
+attlist.temporalRelations &= empty
+tlink = element tlink { attlist.tlink, empty }
+attlist.tlink &=
+  attribute id { xsd:ID },
+  attribute from { xsd:IDREF },
+  attribute to { xsd:IDREF },
+  attribute fromType { text },
+  attribute toType { text },
+  attribute relType { text }
+predicateAnchor =
+  element predicateAnchor { attlist.predicateAnchor, span+ }
+attlist.predicateAnchor &=
+  attribute id { xsd:ID }?,
+  attribute anchorTime { xsd:IDREF }?,
+  attribute beginPoint { xsd:IDREF }?,
+  attribute endPoint { xsd:IDREF }?
+# causal relations
+causalRelations =
+  element causalRelations { attlist.causalRelations, clink* }
+attlist.causalRelations &= empty
+clink = element clink { attlist.clink, empty }
+attlist.clink &=
+  attribute id { xsd:ID },
+  attribute from { xsd:IDREF },
+  attribute to { xsd:IDREF },
+  attribute relType { text }?
+# attribution layer
+attribution = element attribution { attlist.attribution, statement+ }
+attlist.attribution &= empty
+statement =
+  element statement {
+    attlist.statement,
+    (statement_target | statement_source | statement_cue)+
+  }
+attlist.statement &= attribute id { xsd:ID }
+statement_target =
+  element statement_target { attlist.statement_target, span }
+attlist.statement_target &= empty
+statement_source =
+  element statement_source { attlist.statement_source, span }
+attlist.statement_source &= empty
+statement_cue = element statement_cue { attlist.statement_cue, span }
+attlist.statement_cue &= empty
+# factuality layer
+factualities =
+  element factualities { attlist.factualities, factuality+ }
+attlist.factualities &= empty
+attlist.factuality &= attribute id { xsd:ID }
+factuality = element factuality { attlist.factuality, span, factVal+ }
+factVal = element factVal { attlist.factVal, empty }
+attlist.factVal &=
+  attribute value { text },
+  attribute resource { text },
+  attribute confidence { text }?,
+  attribute source { text }?
+# factuality layer (old)
+factualitylayer =
+  element factualitylayer { attlist.factualitylayer, factvalue+ }
+attlist.factualitylayer &= empty
+factvalue = element factvalue { attlist.factvalue, empty }
+attlist.factvalue &=
+  attribute id { xsd:IDREF },
+  attribute prediction { text },
+  attribute confidence { text }?
+# REFERENCES AND SPANS
+
+#  REFERENCES ELEMENT (only used in Entity layer)
+references = element references { attlist.references, span+ }
+attlist.references &= empty
+# SPAN ELEMENT
+span = element span { attlist.span, target+ }
+attlist.span &= attribute primary { text }?
+# TARGET ELEMENT
+target = element target { attlist.target, empty }
+attlist.target &=
+  attribute id { xsd:IDREF },
+  attribute head { text }?
+tunits = element tunits { attlist.tunits, (tunit|text)* }
+attlist.tunits &=  attribute id { text }?
+tunit = element tunit { attlist.tunit }
+attlist.tunit &= attribute id {text}, attribute offset { text }, attribute length { text }, attribute class { text }?
+locations = element locations { attlist.locations, text* }
+attlist.locations &= empty
+dates = element dates { attlist.dates, text* }
+attlist.dates &= empty
+start = NAF
+# OLD ELEMENTS DEPRECATED
+
+# <!ELEMENT events (event)+>
+# <!ELEMENT event (roles)+>
+# <!ATTLIST event
+#           id ID #REQUIRED
+#           span IDREF #REQUIRED
+#           lemma CDATA #REQUIRED
+#           pos CDATA #REQUIRED
+#           eiid CDATA #IMPLIED
+#           class CDATA #IMPLIED
+#           tense CDATA #IMPLIED
+#           aspect CDATA #IMPLIED
+#           polarity CDATA #IMPLIED>
+# 
+# <!ELEMENT roles (role)+>
+# <!ELEMENT role EMPTY>
+# <!ATTLIST role
+#           id IDREF #REQUIRED
+#           role CDATA #REQUIRED>
+# 
+# <!ELEMENT quantifiers (quantifier)+>
+# <!ELEMENT quantifier (span)+>
+# <!ATTLIST quantifier
+#           qid ID #REQUIRED>
+#
