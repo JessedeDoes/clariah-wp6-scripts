@@ -672,7 +672,7 @@ The <opinion> layer consists of the following subelement:
   id CDATA #REQUIRED
   offset CDATA #REQUIRED
   length CDATA #REQUIRED
-  class CDATA #IMPLIED>
+  type CDATA #IMPLIED>
 
 <!ELEMENT locations (#PCDATA)*>
 

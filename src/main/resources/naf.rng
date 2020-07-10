@@ -1355,7 +1355,7 @@
     <attribute name="offset"/>
     <attribute name="length"/>
     <optional>
-      <attribute name="class"/>
+      <attribute name="type"/>
     </optional>
   </define>
   <define name="locations">

@@ -35,7 +35,7 @@ object TEI2NAF {
     if (n.node.isInstanceOf[Elem]) {
       val down = n.children.flatMap(toTextUnits)
       val attributes = n.node.attributes.map(a => <attribute name={a.prefixedKey} value={a.value.text}/>)
-      <tunit id={n.id} offset={n.start.toString} length={n.length.toString} class={n.label}/> ++ down
+      <tunit id={n.id} offset={n.start.toString} length={n.length.toString} type={n.label}/> ++ down
     } else {
        Seq()
     }
