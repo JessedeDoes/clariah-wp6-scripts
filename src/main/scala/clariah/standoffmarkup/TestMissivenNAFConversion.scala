@@ -65,16 +65,16 @@ object TestMissivenNAFConversion {
           val nafteiTokens = naftei.tokensIn(pnaftei.get).map(_.content).take(20)
 
           // println(nafteiTokens)
-          val check = (teiNowhite == nafNoWhite)// && (nafteiTokens == nafTokens)
+          val check = (teiNowhite == nafNoWhite) && (nafteiTokens == nafTokens)
           if (!check) {
             val firstOff = (0 to nafteiTokens.size).find(i => nafTokens(i) != nafteiTokens(i))
             val info = s"${nafteiTokens(firstOff.get)} ${nafTokens(firstOff.get)}"
             println(s"""\n#### Mismatch for $id!!! [$info] ${teiTxt.length} ${nafTxt.length}
               TEI:$teiTxt
-              TEI2:${pnaftei.get.content}
+              TEI from NAF:${pnaftei.get.content}
               NAF:$nafTxt
-              TEI:$nafteiTokens
-              NAF:$nafTokens\n####""")
+              TEI from NAF tokens:$nafteiTokens
+              NAF tokens:$nafTokens\n####""")
           }
         } else {
           Console.err.println(s"$id is missing in XMI!!!")

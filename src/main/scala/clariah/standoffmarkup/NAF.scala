@@ -45,7 +45,7 @@ case class TermWithOffsets(term: Term, offset: Int, length: Int, id: String="") 
 
 case class NAF(document: Elem) {
   lazy val rawText = (document \ "raw").text
-  lazy val tokens = ((document \ "text") \ "wf").map(NafToken(_,rawText)).toList
+  lazy val tokens = ((document \ "text").head \ "wf").map(NafToken(_,rawText)).toList
   lazy val textUnits = (document \\ "tunit").map(TextUnit(_,rawText))
 
   lazy val tUnitMap = textUnits.map(x => x.id ->x).toMap
