@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NAF version="v3.1" xml:lang="nl">
+    <nafHeader>
+        <fileDesc
+            title="Van Outhoorn, Van Hoorn, Pijl, Van Riebeeck, Cops, Bornezee, Van Dam en Van Swoll, 4 aug. 1702" filename="INT_f5ed0442-0589-3dc8-86b8-0dc752b884df"/>
+        <linguisticProcessors layer="raw">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:53:15+0200"/>
+        </linguisticProcessors>
+        <linguisticProcessors layer="tunits">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:53:15+0200"/>
+        </linguisticProcessors>
+    </nafHeader>
+    <raw><![CDATA[188Van Outhoom, Van Hoorn, Pijl, Van Riebeeck, Cops, enz. XXXVI, 4 augustus 1702XXXVI. WILLEM VAN OUTHOORN, JOAN VAN HOORN, LAURENS PIJL,
+ ABRAHAM VAN RIEBEECK, JOANNES COPS, MANUEL BORNEZEE, JACOB
+ VAN DAM EN CHRISTOFFEL VAN SWOLL, BATAVIA 4 augustus 1702.
+Kol. Arch. 1543, fol. 1-2 en copie fol. 299-300.
+(Uit patria werden brieven van 23 juli en 20 sept. ontvangen met)
+- U Ed. Ho. Achtb.r dispositie over het Gouverneur- en Directeur-
+Generaalsamt - . Om ’twelk werkstellig te maken, wanneer wij ons appli-
+cerden, so hebben sodanige hindernissen daarontrent hun opgedaan, dat voor den
+ dienst van d’E. Comp.e geraden is gevonden tot nader dispositie van U Ed. Ho.
+ Achtb.n in geen van beyde eenige verandering te laten geschieden, maar de Regeringe
+ in sijn vorigen staat te laten continueren.
+(Deze brie} werd met het Engelse schip Bomeo verzonden).
+]]></raw>
+    <tunits>
+        <tunit
+            id="INT_f5ed0442-0589-3dc8-86b8-0dc752b884df.TEI.1.text.1.body.1.div.1.fw.1"
+            offset="0" length="3"/>
+        <tunit
+            id="INT_f5ed0442-0589-3dc8-86b8-0dc752b884df.TEI.1.text.1.body.1.div.1.fw.2"
+            offset="3" length="77"/>
+        <tunit
+            id="INT_f5ed0442-0589-3dc8-86b8-0dc752b884df.TEI.1.text.1.body.1.div.1.head.1"
+            offset="80" length="227"/>
+        <tunit
+            id="INT_f5ed0442-0589-3dc8-86b8-0dc752b884df.TEI.1.text.1.body.1.div.1.note.1"
+            offset="307" length="66"/>
+        <tunit
+            id="INT_f5ed0442-0589-3dc8-86b8-0dc752b884df.TEI.1.text.1.body.1.div.1.p.1"
+            offset="373" length="66"/>
+        <tunit
+            id="INT_f5ed0442-0589-3dc8-86b8-0dc752b884df.TEI.1.text.1.body.1.div.1.p.2"
+            offset="439" length="72"/>
+        <tunit
+            id="INT_f5ed0442-0589-3dc8-86b8-0dc752b884df.TEI.1.text.1.body.1.div.1.p.3"
+            offset="511" length="288"/>
+        <tunit
+            id="INT_f5ed0442-0589-3dc8-86b8-0dc752b884df.TEI.1.text.1.body.1.div.1.note.2"
+            offset="799" length="57"/>
+    </tunits>
+</NAF>

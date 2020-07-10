@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NAF version="v3.1" xml:lang="nl">
+    <nafHeader>
+        <fileDesc
+            title="Van Hoorn, Van Riebeeck, Van Swoll, Douglas, De Vos, Van Rijn, Phoonsen en Zwaardecroon, 17 maart 1708" filename="INT_c90278fe-e676-3dcf-9dce-78c5c91dfad1"/>
+        <linguisticProcessors layer="raw">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:52:29+0200"/>
+        </linguisticProcessors>
+        <linguisticProcessors layer="tunits">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:52:29+0200"/>
+        </linguisticProcessors>
+    </nafHeader>
+    <raw><![CDATA[530Van Hoorn, Van Riebeeck, Van Swoll, Douglas, De Vos, enz. XXV, 17 maart 1708XXV. JOAN VAN HOORN, ABRAHAM VAN RIEBEECK, CHRISTOFFEL
+ VAN SWOLL, ABRAHAM DOUGLAS, PIETER DE VOS, ADAM VAN RIJN,
+ BERNARD PHOONSEN, HENDRICK ZWAARDECROON EN *), BATAVIA
+17 maart 1708.
+Copie Kol. Arch. 1641, fol. 396-398.
+(Uit Engeland kwam de Anne , waarmee Cuningham naar Bandjarmasin vertrekt,
+ hij zendt de Blenheim Tiaar Engeland, waarmee deze brief gaat; 29 febr. kwam de
+ Zuydorp uit Zeeland met een brief van 21 febr. 1707, ze vertrok 9 dec. met de Westhoven
+ van de Kaap, waar toen de in mei uit patria onder van Assenburgh vertrokken schepen
+ nog niet waren aangekomen ; 18 febr. kwamen uit Bengalen 6 schepen; men zal er de
+ kantoren Kasimbazar en Patna weer herstellen; de schepen uit Siam en van de Westkust
+ bleven nog uit; 27 febr. kwam van Malakka via Palembang de Zoden).
+1) Hier is ruimte opengelaten voor nog een naam, alleen die van Comelis Chastelein
+ komt in aanmerking, hij kwam blijkbaar niet tijdig opdagen.
+]]></raw>
+    <tunits>
+        <tunit
+            id="INT_c90278fe-e676-3dcf-9dce-78c5c91dfad1.TEI.1.text.1.body.1.div.1.fw.1"
+            offset="0" length="3"/>
+        <tunit
+            id="INT_c90278fe-e676-3dcf-9dce-78c5c91dfad1.TEI.1.text.1.body.1.div.1.fw.2"
+            offset="3" length="76"/>
+        <tunit
+            id="INT_c90278fe-e676-3dcf-9dce-78c5c91dfad1.TEI.1.text.1.body.1.div.1.head.1"
+            offset="79" length="185"/>
+        <tunit
+            id="INT_c90278fe-e676-3dcf-9dce-78c5c91dfad1.TEI.1.text.1.body.1.div.1.p.1"
+            offset="264" length="37"/>
+        <tunit
+            id="INT_c90278fe-e676-3dcf-9dce-78c5c91dfad1.TEI.1.text.1.body.1.div.1.note.1"
+            offset="301" length="567"/>
+        <tunit
+            id="INT_c90278fe-e676-3dcf-9dce-78c5c91dfad1.TEI.1.text.1.body.1.div.1.note.2"
+            offset="868" length="144"/>
+    </tunits>
+</NAF>

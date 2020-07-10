@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NAF version="v3.1" xml:lang="nl">
+    <nafHeader>
+        <fileDesc title="Van Hoorn en raden, 31 maart 1706" filename="INT_b6a00f5f-a087-3ec7-88ce-6c9718c66b61"/>
+        <linguisticProcessors layer="raw">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:53:11+0200"/>
+        </linguisticProcessors>
+        <linguisticProcessors layer="tunits">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:53:11+0200"/>
+        </linguisticProcessors>
+    </nafHeader>
+    <raw><![CDATA[406Van Hoorn en Raden van Indië, XIII, 31 maart 1706XIII. JOAN VAN HOORN EN RADEN VAN INDIË, BATAVIA 31 maart
+ 1706 J).
+Kol. Arch. 1608, folio 516-570 (copie).
+(Verzonden met het galjoot Haze[l]noot ; uit patria kwamen 13febr. de Rijnenburg
+ met 137 koppen, 16 febr. Driebergen, 119, en 24 febr. Belvliet, 131, 28 dec. kwam de
+ Brandenburg bij Ceylon; 2 maart voer de Spierdijck naar Makassar, 12 en 22 maart
+ de Vuur en de Overrijp, de laatste om rijst te halen, daar Java door oorlog en grote
+ droogte weinig leverde en Siam niets; de Buis en de Voorschoten kwamen uit Palembang
+ met 41237 ® witte en 390945 ‘ffi zwarte peper, waard f. 53845 en brieven van
+ 6 jan. en 15 febr.; de Koning schreef,)
+
+              - dat sijne onderdanen te groten hazart en perijckel liepen om door de
+Johoorse zeeschuymers genoomen en van hun leven en goederen berooft te werden,
+ dat de levensmiddelen in sijn rijck begonden duur te werden, omdat er geen rijstvaartuygen
+ van Java quamen, dat hij om sulx voor te komen en voor sijn onderdanen
+ sorg te dragen van meyninge en ook genoodsaackt was een goed gedeelte
+ van sijn land met pady te laten beplanten en dat hij daartoe veel volks van nooden
+had, -
+
+            (zodat het vervoer van peper naar Batavia door zijn onderdanen niet mogelijk
+ was, hem werden passen verleend om rijst van Java' s Oostkust te laten halen; slechts
+ 5 inlandse vaartuigen met 98959 ffi peper kwamen van Palembang ) .
+
+              - Den Sousouhounang 1 2) (die gesegt werd den ouderdom van 123 jaeren
+gepasseert te sijn) nog een volmaackte gesondheyd beleefde.
+
+            (Uit Siam kwam 17 maait Jan van V eisen met de Drie Croonen, de IJssel 20
+ maart, maar de Berkel met het opperhoofd Aernoud Cleur bleef nog uit; men ontving
+ uit Siam een brief van 31 dec., de vriendelijke brieven aan den Koning en den berkelang
+ werden niet beantwoord; Van V eisen werd)
+- niet ter audiëntie g’admitteert en veel affronten aangedaan, mitsgaders
+ den handel verboden, de scheepen opgehouden, de uytvoer der rijst belet en
+ gevolgelijck d’onse naar becomen consent van het hoff genoodsaackt geweest in ’t
+ geheel van daar op te breken, nadat alvorens de schuld des Conings op de wijse, als
+ men die had gecontracteerd, volcomen was geliquideert.
+(Er bleven nog 1400874 sapanhout en 6045 buffelhuiden, welke laatste door de
+ Belvliet naar Japan zullen worden gebracht; men is niet tevreden over het optreden van
+ het personeel, in het bijzonder van Van V eisen; 55 balen kaneel werden er d 1 § kati
+ zilver of 86% rsd. verkocht, de rest, 45 balen, teruggebracht; uit Malakka kwamen
+ brieven van 31 jan. en 27 febr.; men kon daar 19732 Mexicaanse realen verwerven en
+ zond die naar Palembang ; over 1704-1705 gaf men er f. 163221 uit tegen ƒ. 81222
+1) De copie is niet ondertekend en de namen der raden worden niet vermeld.
+2) Bedoeld is de deze titel voerende oude Koning van Palembang.
+]]></raw>
+    <tunits>
+        <tunit
+            id="INT_b6a00f5f-a087-3ec7-88ce-6c9718c66b61.TEI.1.text.1.body.1.div.1.fw.1"
+            offset="0" length="3"/>
+        <tunit
+            id="INT_b6a00f5f-a087-3ec7-88ce-6c9718c66b61.TEI.1.text.1.body.1.div.1.fw.2"
+            offset="3" length="49"/>
+        <tunit
+            id="INT_b6a00f5f-a087-3ec7-88ce-6c9718c66b61.TEI.1.text.1.body.1.div.1.head.1"
+            offset="52" length="68"/>
+        <tunit
+            id="INT_b6a00f5f-a087-3ec7-88ce-6c9718c66b61.TEI.1.text.1.body.1.div.1.p.1"
+            offset="120" length="40"/>
+        <tunit
+            id="INT_b6a00f5f-a087-3ec7-88ce-6c9718c66b61.TEI.1.text.1.body.1.div.1.note.1"
+            offset="160" length="540"/>
+        <tunit
+            id="INT_b6a00f5f-a087-3ec7-88ce-6c9718c66b61.TEI.1.text.1.body.1.div.1.p.2"
+            offset="700" length="504"/>
+        <tunit
+            id="INT_b6a00f5f-a087-3ec7-88ce-6c9718c66b61.TEI.1.text.1.body.1.div.1.note.2"
+            offset="1204" length="232"/>
+        <tunit
+            id="INT_b6a00f5f-a087-3ec7-88ce-6c9718c66b61.TEI.1.text.1.body.1.div.1.p.3"
+            offset="1436" length="158"/>
+        <tunit
+            id="INT_b6a00f5f-a087-3ec7-88ce-6c9718c66b61.TEI.1.text.1.body.1.div.1.note.3"
+            offset="1594" length="289"/>
+        <tunit
+            id="INT_b6a00f5f-a087-3ec7-88ce-6c9718c66b61.TEI.1.text.1.body.1.div.1.p.4"
+            offset="1883" length="373"/>
+        <tunit
+            id="INT_b6a00f5f-a087-3ec7-88ce-6c9718c66b61.TEI.1.text.1.body.1.div.1.note.4"
+            offset="2256" length="501"/>
+        <tunit
+            id="INT_b6a00f5f-a087-3ec7-88ce-6c9718c66b61.TEI.1.text.1.body.1.div.1.note.5"
+            offset="2757" length="75"/>
+        <tunit
+            id="INT_b6a00f5f-a087-3ec7-88ce-6c9718c66b61.TEI.1.text.1.body.1.div.1.note.6"
+            offset="2832" length="64"/>
+    </tunits>
+</NAF>

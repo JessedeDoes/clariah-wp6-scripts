@@ -1,7 +1,7 @@
 package clariah.standoffmarkup
 
 object DataLocations {
-  val base = "/data/CLARIAH/WP6/generalemissiven"
+  val base = "data/missiven"
   val TEIFolder = s"$base/6"
   val xmiFolder = s"$base/missives-xmi-ids-20200416/6"
   val txtFolder = s"$base/split_notes/6"

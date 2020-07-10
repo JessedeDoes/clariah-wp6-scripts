@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NAF version="v3.1" xml:lang="nl">
+    <nafHeader>
+        <fileDesc
+            title="Van Hoorn, Van Riebeeck, Pijl, Cops, Bornezee, Van Swoll, De Wilde, Douglas, Van Rijn, Van der Stel, Zwaardecroon en De Haan, 17 febr. 1705" filename="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5"/>
+        <linguisticProcessors layer="raw">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:53:12+0200"/>
+        </linguisticProcessors>
+        <linguisticProcessors layer="tunits">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:53:12+0200"/>
+        </linguisticProcessors>
+    </nafHeader>
+    <raw><![CDATA[340Van Hoorn, Van Riebeeck, Pijl, Cops, Bornezee, enz. V, 17 februari 1705V. JOAN VAN HOORN, ABRAHAM VAN RIEBEECK, LAURENS PIJL,
+ JOANNES COPS, MANUEL BORNEZEE, CHRISTOFFEL VAN SWOLL,
+ HERMAN DE WILDE, ABRAHAM DOUGLAS, ADAM VAN RIJN, ADRIAAN
+ VAN DER STEL, HENDRIK ZWAARDECROON EN MATTHEUS DE
+ HAAN, BATAVIA 17 februari 1705.
+Kol. Arch. 1676, fol. 2179-2188.
+( Met de Oestgeest verzonden ; men kreeg nog geen rechtstreekse berichten uit Suratte,
+ wel 15febr. met de Wesel uit Cochin een briefje van Malpapoy, bevestigend wat men
+ uit Agra vernam; de Wesel bracht uit Colombo een brief van 25 jan. en uit Negapatam
+ brieven van 6 en 31 dec.; men vernam)
+
+              - het arrivement van 4 France scheepen, als twee van den Konink en
+twee van de Comp. dier natie ter voormelte custe1), niet alleen maar ook wel
+ voomamentlijk hare aankomste en verrigtingen op Cormandel, alwaar zij tusschen
+ Palleacatte en Poedechery off Tegenepatnam ontmoet hebben het schip den
+ Gouden Vogel Phenix, ’t welke den heer gedesigneerd commissaris dier Custe
+ Bernard Phoonsen had verkooren om daarmede uyt Bengale na Cormandel, de
+ plaatsen zijnder commissie, over te vaaren, dogh ook met eene het ongeluk gevild
+ heefd, dat sijn e., van bovens winds voorin, vijandlijke bodems op steven lopende,
+ door haar overmeesterd en weggenomen is geworden na een resistentie van des
+ morgens tot op de middag 2) met verlies van 10 dooden, waaronder den schipper
+ Hendrik Mondiger en het bekomen van 25 gequetste.
+
+            (Men vreest er, dat de vijand daarmee een cargasoen , waard f. 400000 in goud en
+ koper, in handen had gekregen en ook voor het verlies van andere schepen en voor een
+ landing en verzocht)
+
+              - aan die van Ceylon om assistentie van ten minsten 5 cloeke scheepen
+en een freguat med eenige branders.
+
+            (Men kon daaraan in Ceylon niet voldoen o.a. uit vrees voor Jafnapalam, maar
+ men houdt een partij Europese militairen gereed om van Manaar zo nodig naar
+ Coromandel over te zetten, waartoe )
+- door haar aan die van Mallabaar is versogt alle retoumeerende schepen
+ uyt Persia en Souratte van Cochin na Colombo te doen oversteeken om sigh
+ daar te voorsien en sterck te maken.
+(14 febr. vernam men met het Engelse schip Arabella, dat de retourvloot onder
+ Winkéler in patria aankwam; men ziet nu, hoeveel kwaad de vijand kan doen, als men
+ onvoldoende schepen en krijgsvolk heeft; hoop, dat Phoonsen zijn papieren tijdig in
+ zee geworpen heeft; Grousius en Hendrik Decker zijn in commissie gesteld om Phoonsen
+ tegen rantsoen vrij te krijgen; geruchten, dat)
+1) Die van Malabar.
+2) 13 jan. 1705.
+Van Hoorn, Van Riebeeck, Pijl, Cops, Bornezee, enz. V, 17 februari 1705341
+              - die 4 schepen med nog andere 5 d.08 uyt Europa zijn uytgeloopen en
+op de hoogte van Caab de Goede Hoop med eenige Engelse oorlogschepen slaags
+ geweest, bij welck conflict zij 2 van hare mackers souden hebben verlooren en dus
+egter nogh 7 bodems buyten de Phenix sterk gebleven zijn, -
+
+            (hoewel er slechts over 4 Franse schepen werd geschreven; in Negapatam vernam
+ men over Suratte, dat )
+
+              - het scheen, d’Europianen op Nilur *) door toedoen van den fameusen
+Abdul Gaffoer van de Mogolders benauwd wierden, ter zake hij van haar vergoeding
+ begeerde voor seeker scheepken, hetwelcke door de Portugesen van d’Arabieren
+ genomen en bij hem begroot was op 12 lack ropias.
+
+            ( In Trincomale werd een Moors scheepje ontladen , te GaUe werden er twee opgebracht;
+ 28 dec. vertrokken van daar Tiaar patria de Zoelen, Overnes en Theeboom met
+ carg. van ƒ. 813241, weinig wegens tekort aan scheepsruimte).
+1) Nellore, stad niet ver van de oostkust van India aan de Penner-rivier op 14J° N.B.
+]]></raw>
+    <tunits>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.fw.1"
+            offset="0" length="3"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.fw.2"
+            offset="3" length="71"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.head.1"
+            offset="74" length="252"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.p.1"
+            offset="326" length="33"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.note.1"
+            offset="359" length="294"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.p.2"
+            offset="653" length="847"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.note.2"
+            offset="1500" length="189"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.p.3"
+            offset="1689" length="134"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.note.3"
+            offset="1823" length="192"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.p.4"
+            offset="2015" length="184"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.note.4"
+            offset="2199" length="382"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.note.5"
+            offset="2581" length="20"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.note.6"
+            offset="2601" length="17"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.fw.3"
+            offset="2618" length="71"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.fw.4"
+            offset="2689" length="3"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.p.5"
+            offset="2692" length="316"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.note.7"
+            offset="3008" length="103"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.p.6"
+            offset="3111" length="307"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.note.8"
+            offset="3418" length="226"/>
+        <tunit
+            id="INT_e8076dfa-0c0d-3bbe-b296-a20566688da5.TEI.1.text.1.body.1.div.1.note.9"
+            offset="3644" length="86"/>
+    </tunits>
+</NAF>

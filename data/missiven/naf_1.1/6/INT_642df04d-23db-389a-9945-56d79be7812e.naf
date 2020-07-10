@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NAF version="v3.1" xml:lang="nl">
+    <nafHeader>
+        <fileDesc
+            title="Van Outhoorn, Van Hoorn, Pijl, De Haas, Van Riebeeck, Cops, Bornezee, Pit, Van Rhee en Van Dam, 19 febr. 1700" filename="INT_642df04d-23db-389a-9945-56d79be7812e"/>
+        <linguisticProcessors layer="raw">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:52:54+0200"/>
+        </linguisticProcessors>
+        <linguisticProcessors layer="tunits">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:52:54+0200"/>
+        </linguisticProcessors>
+    </nafHeader>
+    <raw><![CDATA[Van Outhoorn, Van Hoorn, Pijl, De Haas, Van Riebeeck, enz. XXVI, 19 februari 1700 1 13XXVI. WILLEM VAN OUTHOORN, JOAN VAN HOORN, LAURENS PIJL,DIRK DE HAAS, ABRAHAM VAN RIEBEECK, JOANNES COPS, MANUELBORNEZEE, LAURENS PIT, THOMAS VAN RHEE EN JACOB VAN DAM,BATAVIA 19 februari 1700.Copie. Kol. Arch. 1520, fol. 82-83.(Op arrest van de Raad van Justitie wordt verzocht een wissel van 2250 rsd., doorValckenier getrokken ter uitbetaling aan George Munnik o} mr. Dirk van Bleyswijck ,niet uit te betalen).8]]></raw>
+    <tunits>
+        <tunit
+            id="INT_642df04d-23db-389a-9945-56d79be7812e.TEI.1.text.1.body.1.div.1.fw.1"
+            offset="0" length="86"/>
+        <tunit
+            id="INT_642df04d-23db-389a-9945-56d79be7812e.TEI.1.text.1.body.1.div.1.fw.2"
+            offset="86" length="413"/>
+        <tunit
+            id="INT_642df04d-23db-389a-9945-56d79be7812e.TEI.1.text.1.body.1.div.1.fw.3"
+            offset="499" length="1"/>
+    </tunits>
+</NAF>

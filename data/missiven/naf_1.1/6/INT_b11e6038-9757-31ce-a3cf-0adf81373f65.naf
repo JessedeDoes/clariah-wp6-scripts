@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NAF version="v3.1" xml:lang="nl">
+    <nafHeader>
+        <fileDesc
+            title="Van Outhoorn, Van Hoorn, Pijl, De Haas, Van Riebeeck, Valckenier, Cops, Bornezee, Lycochthon, Van Rhee en Van Dam, 2 maart 1699" filename="INT_b11e6038-9757-31ce-a3cf-0adf81373f65"/>
+        <linguisticProcessors layer="raw">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:53:15+0200"/>
+        </linguisticProcessors>
+        <linguisticProcessors layer="tunits">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:53:15+0200"/>
+        </linguisticProcessors>
+    </nafHeader>
+    <raw><![CDATA[64Van Oüthoom, Van Hoorn, Pijl, Do Haas, Van Riebeeck, enz. XXI, 2 maart 1699XXI. WILLEM VAN OUTHOORN, JOAN VAN HOORN, LAURENS PIJL,
+ DIRK DE HAAS, ABRAHAM VAN RIEBEECK, WOUTER VALCKENIER,
+ JOANNES COPS, MANUEL BORNEZEE, WYBRAND LYCOCHTHON,
+ THOMAS VAN RHEE EN JACOB VAN DAM, BATAVIA 2 maart 1699.
+Kol. Arch. 1490, fol. 1177-1179, 2e exemplaar 1491, fol. 1827-1829.
+(De Bekestein vertrok met de Swaag 11 febr. en passeerde de 13e Bantam ;
+ Valckenier en Lycochthon vroegen in november te mogen repatriëren , zo ook Van
+ Hoorn , eventueel een jaar later , dan wel om te Batavia in ruste te mogen blijven, nu
+ vroeg ook Pijl ontslag ; allen werd verzocht nog enige jaren door te dienen, maar men
+ kan hen niet dwingen aan te blijven; van de Spaarne is niets meer vernomen; de
+ Vrijburg meldde 3 febr.,)
+
+              - dat dien bodem aan de zuydzijde van dit eylant in de bay van
+Mauritius x) is vervallen, genoegsaam ten eynde van alle handprovisiën, dog dat op
+ de geheele reyse niet meer dan 6 man overleden en nog 251 zielen sterk waren. Wij
+ hebben na Sirrebon geordonneert te besorgen, dat dien bodem door den inlander
+ voor betaling van het nodige wert voorsien en sullen deselve ook van hier eenige
+ behoeften bestellen, indien men op ons aanschrijven deselve nodig agten en vorderen
+ sal, staet makend, dat wij dien bodem niet voor het kenteren van ’t mousson
+ in ’t begin van april aanstaande alhier sullen konnen hebben.
+
+            (Deze brief wordt verzonden met het Engelse schip Toscany-Gaüey).
+1) De Mauritsbaai aan de zuidkust van Java op ongeveer 108°42' O.L.
+]]></raw>
+    <tunits>
+        <tunit
+            id="INT_b11e6038-9757-31ce-a3cf-0adf81373f65.TEI.1.text.1.body.1.div.1.fw.1"
+            offset="0" length="2"/>
+        <tunit
+            id="INT_b11e6038-9757-31ce-a3cf-0adf81373f65.TEI.1.text.1.body.1.div.1.fw.2"
+            offset="2" length="75"/>
+        <tunit
+            id="INT_b11e6038-9757-31ce-a3cf-0adf81373f65.TEI.1.text.1.body.1.div.1.head.1"
+            offset="77" length="221"/>
+        <tunit
+            id="INT_b11e6038-9757-31ce-a3cf-0adf81373f65.TEI.1.text.1.body.1.div.1.p.1"
+            offset="298" length="68"/>
+        <tunit
+            id="INT_b11e6038-9757-31ce-a3cf-0adf81373f65.TEI.1.text.1.body.1.div.1.note.1"
+            offset="366" length="435"/>
+        <tunit
+            id="INT_b11e6038-9757-31ce-a3cf-0adf81373f65.TEI.1.text.1.body.1.div.1.p.2"
+            offset="801" length="643"/>
+        <tunit
+            id="INT_b11e6038-9757-31ce-a3cf-0adf81373f65.TEI.1.text.1.body.1.div.1.note.2"
+            offset="1444" length="66"/>
+        <tunit
+            id="INT_b11e6038-9757-31ce-a3cf-0adf81373f65.TEI.1.text.1.body.1.div.1.note.3"
+            offset="1510" length="68"/>
+    </tunits>
+</NAF>

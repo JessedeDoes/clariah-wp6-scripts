@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NAF version="v3.1" xml:lang="nl">
+    <nafHeader>
+        <fileDesc
+            title="Van Hoorn, Van Riebeeck, Van Swoll, De Wilde, Douglas, De Vos, Phoonsen, Van Rijn, Zwaardecroon, Becker en Chastelein, 5 aug. 1706" filename="INT_153f9f59-72b6-38c9-a925-8564b7c361bd"/>
+        <linguisticProcessors layer="raw">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:53:19+0200"/>
+        </linguisticProcessors>
+        <linguisticProcessors layer="tunits">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:53:19+0200"/>
+        </linguisticProcessors>
+    </nafHeader>
+    <raw><![CDATA[414Van Hoorn, Van Riebeeck, Van Swoll, De Wilde, Douglas, enz. XV, 5 augustus 1706XV. JOAN VAN HOORN, ABRAHAM VAN RIEBEECK, CHRISTOFFEL
+ VAN SWOLL, HERMAN DE WILDE, ABRAHAM DOUGLAS, PIETER DE
+ VOS, BERNARD PHOONSEN, ADAM VAN RIJN, HENDRIK ZWAARDECROON,
+ HENRICK BECKER EN CORNELIS CHASTELEIN, BATAVIA
+ 5 augustus 1706 J).
+Kol. Arch. 1608, fol. 9-10.
+(Verzonden met het Engelse schip ,, Feterstori ’ en ontvangen 27 juni 1707,)
+
+              - waarin ©ede ook overvaart den bekenden capitain William Dampier
+van sijn verloore reyse nevens stux 1 2) van sijn volk en twee door hem gevangen
+ genomen Spanjaarden, soodanig hij met deselve den 30e december des voorleeden
+ jaars eyndelijk in Ternaten verschenen en vervolgens op den 26e julij jongstleden
+ met den verlosten Ternaatsen gouverneur Pieter Roselaar per ’t schip den Eenhoorn
+ hier aangekomen is, staande nog agt van sijn resteerend volk op hun instantie
+ met onse retourscheepen te volgen, alsoo die met hem, Dampier, niet hebben
+ willen vaaren.
+
+            (Uit patria kwamen 17 juni de Herstelde Leeuw, 28 juli de Limburg, 30 juli de
+ Grimmestein; Meyndert de Boer kwam 10 juni mei zijn vloot via Cochin terug,)
+
+              - dog met een vrugteloose verrigtinge, alsoo de onsen bij den nieuwen
+Souratsen gouverneur Amanetchan tot geen gehoor ofte eenige satisfactie hadden
+ konnen komen en alsoo met veel sieken den 20e maart dese jaars uyt die
+ Souratse bestelling onverrigter saaken hadden moeten opbreeken.
+
+            ( Een nieuwe expeditie onder den visitaleur -generaal J oan Grootenhuys en Pieter
+ Bemard van Breen als secunde is in voorbereiding; uit Bengalen kwamen aan Jacob
+ Pelgrom en de opperkooplieden Dirk Wilree en Alexander Urwijn met de Schoonewal,
+ Slooten en Bekestein, uit Amboina 6 juni gouverneur Coyet, uit Ternate 26 juli gouverneur
+ Pieter Rooselaar; 5 schepen, waarvan de Belvliet via Siam, vertrokken met het
+ opperhoofd Ferdinand de Groot naar Japan; Cleur werd mei de Sion naar Siam
+ gezonden om na te gaan, of men daar tot rustiger handel zou kunnen komen; brieven
+ uit patria van 22 aug. tot 28 oct. werden ontvangen).
+1) Comans was door Heren XVII ontslagen, De Haan was slechts geassumeerd in Rade
+ van Indië en werd door de Heren niet als raad extra-ordinair benoemd, hij maakte dus geen
+ deel meer uit van de Hoge Regering.
+2) Niet ingevuld.
+]]></raw>
+    <tunits>
+        <tunit
+            id="INT_153f9f59-72b6-38c9-a925-8564b7c361bd.TEI.1.text.1.body.1.div.1.fw.1"
+            offset="0" length="3"/>
+        <tunit
+            id="INT_153f9f59-72b6-38c9-a925-8564b7c361bd.TEI.1.text.1.body.1.div.1.fw.2"
+            offset="3" length="79"/>
+        <tunit
+            id="INT_153f9f59-72b6-38c9-a925-8564b7c361bd.TEI.1.text.1.body.1.div.1.head.1"
+            offset="82" length="240"/>
+        <tunit
+            id="INT_153f9f59-72b6-38c9-a925-8564b7c361bd.TEI.1.text.1.body.1.div.1.p.1"
+            offset="322" length="28"/>
+        <tunit
+            id="INT_153f9f59-72b6-38c9-a925-8564b7c361bd.TEI.1.text.1.body.1.div.1.note.1"
+            offset="350" length="77"/>
+        <tunit
+            id="INT_153f9f59-72b6-38c9-a925-8564b7c361bd.TEI.1.text.1.body.1.div.1.p.2"
+            offset="427" length="591"/>
+        <tunit
+            id="INT_153f9f59-72b6-38c9-a925-8564b7c361bd.TEI.1.text.1.body.1.div.1.note.2"
+            offset="1018" length="156"/>
+        <tunit
+            id="INT_153f9f59-72b6-38c9-a925-8564b7c361bd.TEI.1.text.1.body.1.div.1.p.3"
+            offset="1174" length="314"/>
+        <tunit
+            id="INT_153f9f59-72b6-38c9-a925-8564b7c361bd.TEI.1.text.1.body.1.div.1.note.3"
+            offset="1488" length="629"/>
+        <tunit
+            id="INT_153f9f59-72b6-38c9-a925-8564b7c361bd.TEI.1.text.1.body.1.div.1.note.4"
+            offset="2117" length="209"/>
+        <tunit
+            id="INT_153f9f59-72b6-38c9-a925-8564b7c361bd.TEI.1.text.1.body.1.div.1.note.5"
+            offset="2326" length="18"/>
+    </tunits>
+</NAF>

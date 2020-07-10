@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NAF version="v3.1" xml:lang="nl">
+    <nafHeader>
+        <fileDesc
+            title="Van Outhoorn, Van Hoorn, Pijl, De Haas, Van Riebeeck, Cops, Bornezee, Van Rhee, Van Dam en Van Swoll, 10 nov. 1700" filename="INT_d4128e56-215f-3666-a0d6-24eae6cb1e35"/>
+        <linguisticProcessors layer="raw">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:52:34+0200"/>
+        </linguisticProcessors>
+        <linguisticProcessors layer="tunits">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:52:34+0200"/>
+        </linguisticProcessors>
+    </nafHeader>
+    <raw><![CDATA[Van Outhoom, Van Hoorn, Pijl, De Haas, Van Riebeeck, enz. XXVIII, 10 november 1700 1 15XXVIII. WILLEM VAN OUTHOORN, JOAN VAN HOORN, LAURENS
+ PIJL, DIRK DE HAAS, ABRAHAM VAN RIEBEECK, JOANNES COPS,
+ MANUEL BORNEZEE, THOMAS VAN RHEE, JACOB VAN DAM EN CHRISTOFFEL
+ VAN SWOLL, BATAVIA 10 november 1700.
+Kol. Arch. 1520, fol. 125-133.
+(Verzonden met de Domburg, Peperboom, Jerusalem en Huys te Bijweg; wissels
+ op patria werden getrokken voor 22922 rsd., waarvan 16874 van den chirurgijn
+ Andries Blokland; de Domburg brengt naar Middelburg cargasoen van ƒ. 319566 ,
+ Jerusalem naar Rotterdam ƒ. 305820, Huis te Bijweg naar Amsterdam ƒ. 158721 ,
+ Peperboom naar Middelburg ƒ. 153126; de Vosmeer komt zojuist uit patria, de vorige
+ schepen kwamen goed aan de Kaap aan).
+]]></raw>
+    <tunits>
+        <tunit
+            id="INT_d4128e56-215f-3666-a0d6-24eae6cb1e35.TEI.1.text.1.body.1.div.1.fw.1"
+            offset="0" length="87"/>
+        <tunit
+            id="INT_d4128e56-215f-3666-a0d6-24eae6cb1e35.TEI.1.text.1.body.1.div.1.head.1"
+            offset="87" length="212"/>
+        <tunit
+            id="INT_d4128e56-215f-3666-a0d6-24eae6cb1e35.TEI.1.text.1.body.1.div.1.p.1"
+            offset="299" length="31"/>
+        <tunit
+            id="INT_d4128e56-215f-3666-a0d6-24eae6cb1e35.TEI.1.text.1.body.1.div.1.note.1"
+            offset="330" length="434"/>
+    </tunits>
+</NAF>

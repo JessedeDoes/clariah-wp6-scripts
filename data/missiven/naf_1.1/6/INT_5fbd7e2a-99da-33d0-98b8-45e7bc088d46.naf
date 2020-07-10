@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NAF version="v3.1" xml:lang="nl">
+    <nafHeader>
+        <fileDesc
+            title="Van Outhoorn, Van Hoorn, Van Riebeeck, Pijl, Cops, Bornezee, Van Swoll, De Wilde, Douglas, Van Rijn en Van der Stel, 14 maart 1704" filename="INT_5fbd7e2a-99da-33d0-98b8-45e7bc088d46"/>
+        <linguisticProcessors layer="raw">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:53:09+0200"/>
+        </linguisticProcessors>
+        <linguisticProcessors layer="tunits">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:53:09+0200"/>
+        </linguisticProcessors>
+    </nafHeader>
+    <raw><![CDATA[286Van Outhoom, Van Hoorn, Van Riebeeck, Pijl, Cops, enz. XLHI, 14 maart 1704XLIH. WILLEM VAN OUTHOORN, JOAN VAN HOORN, ABRAHAM VAN
+ RIEBEECK, LAURENS PIJL, JOANNES COPS, MANUEL BORNEZEE,
+ CHRISTOFFEL VAN SWOLL, HERMAN DE WILDE, ABRAHAM DOUGLAS,
+ ADAM VAN RIJN EN ADRIAAN VAN DER STEL, BATAVIA 14
+ maart 1704.
+Kol. Arch. 1563, fol. 2180-2183, copie 1573, fol. 493-496 ').
+(Verzonden met de Engelse Gloucester en Union; de Noordgouw kwam 6 maart
+ om de hoek van Bantam; de Nederland kwam uit Perzië met een brief van 20 aug.;
+ 5 retourschepen vertrokken 25 dec. van Galle).
+Men wel soude mogen prognosticeren, de zoon van den Pangeran Poegar met
+ sijn opstand tegen den nieuwen Soesoehoenang sijn intentie beswaarlijk sal bereiken,
+ de wij le hij reets met sijn bij hebbende macht na het district van Ceribon soude
+ sijn geweken, tenware dat die van Bagaleen en Madion aan de andere kant, over
+ het reets aangedaan quaad tractement aan de hare misnoegt en de laatste reets op
+ de been geraakt zijnde, hem incommodeerden en de handen vol werk geven.
+(Jacob van Dam overleed 9 maart , Adam van Rijn volgt hem voorlopig op als
+ president van de Raad van Justitie; De Wilde is de jongste raad-ordinaris ; de Kattendijk
+ kwam 29 febr. van de Kaap).
+1) Gebruik is gemaakt van de beter leesbare copie.
+JOAN VAN HOORN
+15 AUGUSTUS 1704 — 30 OCTOBER 1709
+]]></raw>
+    <tunits>
+        <tunit
+            id="INT_5fbd7e2a-99da-33d0-98b8-45e7bc088d46.TEI.1.text.1.body.1.div.1.div.1.fw.1"
+            offset="0" length="3"/>
+        <tunit
+            id="INT_5fbd7e2a-99da-33d0-98b8-45e7bc088d46.TEI.1.text.1.body.1.div.1.div.1.fw.2"
+            offset="3" length="74"/>
+        <tunit
+            id="INT_5fbd7e2a-99da-33d0-98b8-45e7bc088d46.TEI.1.text.1.body.1.div.1.div.1.head.1"
+            offset="77" length="233"/>
+        <tunit
+            id="INT_5fbd7e2a-99da-33d0-98b8-45e7bc088d46.TEI.1.text.1.body.1.div.1.div.1.p.1"
+            offset="310" length="62"/>
+        <tunit
+            id="INT_5fbd7e2a-99da-33d0-98b8-45e7bc088d46.TEI.1.text.1.body.1.div.1.div.1.note.1"
+            offset="372" length="201"/>
+        <tunit
+            id="INT_5fbd7e2a-99da-33d0-98b8-45e7bc088d46.TEI.1.text.1.body.1.div.1.div.1.p.2"
+            offset="573" length="475"/>
+        <tunit
+            id="INT_5fbd7e2a-99da-33d0-98b8-45e7bc088d46.TEI.1.text.1.body.1.div.1.div.1.note.2"
+            offset="1048" length="195"/>
+        <tunit
+            id="INT_5fbd7e2a-99da-33d0-98b8-45e7bc088d46.TEI.1.text.1.body.1.div.1.div.1.note.3"
+            offset="1243" length="51"/>
+        <tunit
+            id="INT_5fbd7e2a-99da-33d0-98b8-45e7bc088d46.TEI.1.text.1.body.1.div.1.div.2.head.1"
+            offset="1294" length="15"/>
+        <tunit
+            id="INT_5fbd7e2a-99da-33d0-98b8-45e7bc088d46.TEI.1.text.1.body.1.div.1.div.2.p.1"
+            offset="1309" length="35"/>
+    </tunits>
+</NAF>

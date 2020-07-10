@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NAF version="v3.1" xml:lang="nl">
+    <nafHeader>
+        <fileDesc title="Toelichting bij de Indices" filename="INT_47b6bfb2-af19-357b-b917-e8ff3aa666f9"/>
+        <linguisticProcessors layer="raw">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:52:41+0200"/>
+        </linguisticProcessors>
+        <linguisticProcessors layer="tunits">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:52:41+0200"/>
+        </linguisticProcessors>
+    </nafHeader>
+    <raw><![CDATA[TOELICHTING BIJ DE INDICES.
+Cursief gedrukt zijn de bladzijden, waar een woord is toegelicht.
+Woorden als Chinees en Engelsman zoeke men onder China en Engeland in de Index van Geografische
+ Namen, vlak daarop volgt: China (Keizer van) en Engeland (Koning van). GrootMogol,
+ Sjogoen enz. zoeke men echter in de Index van Andere Termen.
+De schrijvers der Gen. Miss. hebben eigennamen van mensen, plaatsen, schepen enz. zonder
+ enig systeem en zonder consequent aan één schrijfwijze vast te houden gespeld, wat vooral bij
+ niet-Europese termen tot verwarring kan leiden. Waar de kans daarop groot is, zijn verschillende
+ schrijfwijzen in de indices opgenomen met verwijzing naar degene, waarbij de bladzijden
+ zijn aangegeven. Geografische namen en scheepsnamen zijn waar mogolijk in moderne schrijfwijze
+ opgenomen. Bij scheepsnamen is niet getracht te onderscheiden tussen gelijknamige
+ schepen.
+De volgende letters zoeke men zo nodig ook op de volgende wijze:
+C bij K en S. K bij C en Q.
+Ch bij G, Ts en Tsj. Q bij K.
+Dj bij J. S bij C en Z.
+F bij V en Ph. V bij F.
+G bij Ch. Z bij S.
+J bij Dj.
+]]></raw>
+    <tunits>
+        <tunit
+            id="INT_47b6bfb2-af19-357b-b917-e8ff3aa666f9.TEI.1.text.1.body.1.div.1.head.1"
+            offset="0" length="28"/>
+        <tunit
+            id="INT_47b6bfb2-af19-357b-b917-e8ff3aa666f9.TEI.1.text.1.body.1.div.1.p.1"
+            offset="28" length="66"/>
+        <tunit
+            id="INT_47b6bfb2-af19-357b-b917-e8ff3aa666f9.TEI.1.text.1.body.1.div.1.p.2"
+            offset="94" length="242"/>
+        <tunit
+            id="INT_47b6bfb2-af19-357b-b917-e8ff3aa666f9.TEI.1.text.1.body.1.div.1.p.3"
+            offset="336" length="560"/>
+        <tunit
+            id="INT_47b6bfb2-af19-357b-b917-e8ff3aa666f9.TEI.1.text.1.body.1.div.1.p.4"
+            offset="896" length="65"/>
+        <tunit
+            id="INT_47b6bfb2-af19-357b-b917-e8ff3aa666f9.TEI.1.text.1.body.1.div.1.p.5"
+            offset="961" length="28"/>
+        <tunit
+            id="INT_47b6bfb2-af19-357b-b917-e8ff3aa666f9.TEI.1.text.1.body.1.div.1.p.6"
+            offset="989" length="30"/>
+        <tunit
+            id="INT_47b6bfb2-af19-357b-b917-e8ff3aa666f9.TEI.1.text.1.body.1.div.1.p.7"
+            offset="1019" length="24"/>
+        <tunit
+            id="INT_47b6bfb2-af19-357b-b917-e8ff3aa666f9.TEI.1.text.1.body.1.div.1.p.8"
+            offset="1043" length="24"/>
+        <tunit
+            id="INT_47b6bfb2-af19-357b-b917-e8ff3aa666f9.TEI.1.text.1.body.1.div.1.p.9"
+            offset="1067" length="19"/>
+        <tunit
+            id="INT_47b6bfb2-af19-357b-b917-e8ff3aa666f9.TEI.1.text.1.body.1.div.1.p.10"
+            offset="1086" length="10"/>
+    </tunits>
+</NAF>

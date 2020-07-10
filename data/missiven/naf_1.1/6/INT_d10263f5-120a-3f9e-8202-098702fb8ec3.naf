@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NAF version="v3.1" xml:lang="nl">
+    <nafHeader>
+        <fileDesc
+            title="Van Hoorn, Van Riebeeck, Pijl, Van Swoll, Douglas, De Vos, Van Rijn, Van der Stel, Zwaardecroon, Chasteleyn, De Roo en De Haan, 24 aug. 1705" filename="INT_d10263f5-120a-3f9e-8202-098702fb8ec3"/>
+        <linguisticProcessors layer="raw">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:52:53+0200"/>
+        </linguisticProcessors>
+        <linguisticProcessors layer="tunits">
+            <lp name="voc-missives-tei-naf-converter" version="1.1" timestamp="2020-07-03T00:52:53+0200"/>
+        </linguisticProcessors>
+    </nafHeader>
+    <raw><![CDATA[Van Hoorn, Van Riebeeck, Pijl, Van Swoll, Douglas, enz. VIII, 24 augustus 1705345VIII. JOAN VAN HOORN, ABRAHAM VAN RIEBEECK, LAURENS PIJL,
+ CHRISTOFFEL VAN SWOLL, ABRAHAM DOUGLAS, PIETER DE VOS,
+ ADAM VAN RIJN, ADRIAAN VAN DER STEL, HENDRIK ZW AARDECROON,
+ CORNELIS CHASTELEYN, WILLEM DE ROO EN MATTHEUS
+ DE HAAN, BATAVIA 24 augustus 1705.
+Kol. Arch. 1588, copie fol. 403-409.
+( Het origineel werd met de Engelse Seafort verzonden, die 24 juni van Bandjarmasin
+ kwam; directeur Pieter de Vos kwam met alle V.O.G. personeel tussen 7 en 20
+ juli van Suratte met 10 vaartuigen , 2 gearresteerde Moorse bodems te Cochin latend;
+ 14 juli werd besloten )
+- den commandeur Meyndert de Boer nevens den oppercoopman Willem
+ Zix1) over Persia wederom na Zouratta te expedieeren met de schepen de
+ Lieffde, d’Ellemeet, Rijgersdael, Vosmaar, Coning Carel de Derde en de jagtjes
+ de Hartloop en ’t Huys te Haan.
+(In Perzië volgt Frans Castelijn Wichelman als directeur op; De Vos arresteerde
+ goederen van Abdul Gafur, vele tonnen gouds waard, meest in Mexicaanse realen;
+ de Geyn, Carthago en Beverwijck zijn bestemd tot retourschepen van Ceylon, het eerste
+ vertrok 22 aug. derwaarts, Pelgrom moet er nog een schip uit Bengalen bijvoegen; de
+ Nieuwburg vertrok 29 april via Siam naar Japan, de IJssél, Drie Croonen en Berckel
+ later Tiaar Siam met den opperkoopman J oan van V eisen, als gezaghebber van Bantam
+ opgevolgd door Bitter van Reede; De Wilde bood zich aan als veldoverste op Java en
+ vertrok 4 juli naar Semarang met den majoor der artillerie Christoffel W els en vele
+ soldaten; uit patria kwamen tussen 14 mei en 20 aug. de Gent, Bon, Neptunus,
+ Hoedekenskerke, Oosterstein, Slooten, Generale Vrede, Donker vliet, Lam en door
+ Straat Bali de Huis te Hemert met brieven van 24 juli tot 29 december; op last van
+ daar traden Cops en Bornezee 27 juli af, Cops verscheen reeds lang niet meer ter vergadering;
+ Douglas en De Vos werden raad-ordinair , Hendrik Zwaardecroon en Cornejis
+ Chasteleyn raad-extraordinair , de daartoe ook benoemde Tant was 29 mei reeds
+ overleden, Becker is op weg van Ceylon en Phoonsen nog in Coromandel, De Roo
+ kwam 13 juni van Makassar en werd in Rade geassumeerd; Jan Grootenhuys werd
+ visitateur -generaal, Anthony Valckenier volgt hem op als secunde te Malakka; wegens
+ de onderlinge twisten in Bengalen zijn van daar opgeroepen Pelgrom en de opperkoop -
+lieden Wilree en Urwijn, De Roo wordt er directeur; Coyet mag als gouverneur van
+ Amboina aftreden en wordt opgevolgd door Adriaan van der Stel).
+1) Willem Six kwam in 1692 uit als onderkoopman, in 1693 te Suratte, 1701 koopman
+ en secunde aldaar, 1705 opperkoopman en secunde bij de commissie derwaarts, aug. 1706
+ visitateur-generaal, nov. 1709 gouverneur van Malakka, juli 1711 naar Batavia opgeroepen en
+ buiten dienst gesteld, 1712 weer in dienst gesteld te Batavia, juli 1716 weer buiten dienst
+ wegens zijn weigering als directeur naar Perzië te gaan, maart 1716 raad extra-ordinair van
+ Indië, sept. 1718 gestorven.
+]]></raw>
+    <tunits>
+        <tunit
+            id="INT_d10263f5-120a-3f9e-8202-098702fb8ec3.TEI.1.text.1.body.1.div.1.fw.1"
+            offset="0" length="78"/>
+        <tunit
+            id="INT_d10263f5-120a-3f9e-8202-098702fb8ec3.TEI.1.text.1.body.1.div.1.fw.2"
+            offset="78" length="3"/>
+        <tunit
+            id="INT_d10263f5-120a-3f9e-8202-098702fb8ec3.TEI.1.text.1.body.1.div.1.head.1"
+            offset="81" length="259"/>
+        <tunit
+            id="INT_d10263f5-120a-3f9e-8202-098702fb8ec3.TEI.1.text.1.body.1.div.1.p.1"
+            offset="340" length="37"/>
+        <tunit
+            id="INT_d10263f5-120a-3f9e-8202-098702fb8ec3.TEI.1.text.1.body.1.div.1.note.1"
+            offset="377" length="272"/>
+        <tunit
+            id="INT_d10263f5-120a-3f9e-8202-098702fb8ec3.TEI.1.text.1.body.1.div.1.p.2"
+            offset="649" length="250"/>
+        <tunit
+            id="INT_d10263f5-120a-3f9e-8202-098702fb8ec3.TEI.1.text.1.body.1.div.1.note.2"
+            offset="899" length="1636"/>
+        <tunit
+            id="INT_d10263f5-120a-3f9e-8202-098702fb8ec3.TEI.1.text.1.body.1.div.1.note.3"
+            offset="2535" length="478"/>
+    </tunits>
+</NAF>
