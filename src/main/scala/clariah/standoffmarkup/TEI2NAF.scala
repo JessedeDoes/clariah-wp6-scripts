@@ -59,6 +59,7 @@ object TEI2NAF {
       val pid = (d \\ "idno").filter(x => (x \ "@type").text == "pid").headOption.map(_.text).getOrElse("__")
       val naf = <NAF version="v3.1a" xml:lang="nl">
       <nafHeader>
+        <public publicId="$pid.naf" uri=""></public>
         <fileDesc
           title={(d \\ "title").text}
           filename={pid}/>
