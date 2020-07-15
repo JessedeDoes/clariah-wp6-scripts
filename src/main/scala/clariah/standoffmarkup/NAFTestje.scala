@@ -26,6 +26,7 @@ object NAFTestje {
 
     val w_tei = (exampleTEI \\ "w").map(_.text)
     val pw = new PrintWriter("/tmp/txt.txt")
+
     pw.print(naf_txt)
     pw.close()
 
