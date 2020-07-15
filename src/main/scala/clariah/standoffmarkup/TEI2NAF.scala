@@ -49,7 +49,7 @@ object TEI2NAF {
       val txt = n1.text
 
       lazy val pcdata = txt
-      lazy val cdata =  scala.xml.Unparsed("<![CDATA[" + txt   + "]]>")
+      lazy val cdata =  scala.xml.Unparsed("<![CDATA[" +  txt   + "]]>")
       val allTokens = StandoffTokenizing.tokenize(n1, x => splittingTags.contains(x.label))
         ._1.zipWithIndex.map({case (t,i) =>
           val id = s"wf.$i"
@@ -107,11 +107,12 @@ object MissivenToNAF {
   def getTermsFromTEIWithSentenceIds(d: Elem): List[Term] = {
     val d1 = AddExtraIdsInTEI.completeIds(d)
     val sentences = d1 \\ "s"
-    val terms = sentences.flatMap( s => {
+    val terms = sentences.flatMap(s => {
       val sentenceId = Some(getId(s))
       s.descendant.filter(x => x.label == "w" || x.label == "pc").map(
-        { case e: Elem if e.label == "w" => Term(getId(e), e.text, (e \ "@lemma").text, (e \ "@type").text, sentenceId)
-        case e: Elem if e.label == "pc" => Term(getId(e), e.text, "_", "PC", sentenceId)
+        {
+          case e: Elem if e.label == "w" => Term(getId(e), e.text, (e \ "@lemma").text, (e \ "@type").text, sentenceId)
+          case e: Elem if e.label == "pc" => Term(getId(e), e.text, "_", "PC", sentenceId)
         })
     })
     terms.toList

@@ -28,4 +28,19 @@ object EditDistance {
 
     def printDistance(s1:String, s2:String)=println("%s -> %s : %d".format(s1, s2, distance(s1, s2)))
 
+  def longestCommonPrefix(a: String, b: String): String = {
+      var same = true
+       val sb = new StringBuilder
+       var i = 0
+       while(same && i < math.min(a.length, b.length)) {
+           if(a.charAt(i) != b.charAt(i)) {
+               same = false
+             } else {
+               sb += a.charAt(i)
+               i += 1
+             }
+         }
+       sb.result
+  }
+
 }
