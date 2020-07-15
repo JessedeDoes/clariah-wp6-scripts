@@ -41,7 +41,8 @@ object TEI2NAF {
     }
   }
 
-  def tei2naf(d: Elem) = {
+  def tei2naf(d0: Elem) = {
+    val d = AddExtraIdsInTEI.completeIds(d0)
     val textNode = (d \\ "text").headOption
     textNode.map(n => {
       val n1 = StandoffMarkup.createStandoffMarkup(n,0)
@@ -59,7 +60,7 @@ object TEI2NAF {
       val pid = (d \\ "idno").filter(x => (x \ "@type").text == "pid").headOption.map(_.text).getOrElse("__")
       val naf = <NAF version="v3.1a" xml:lang="nl">
       <nafHeader>
-        <public publicId="$pid.naf" uri=""></public>
+        <public publicId={pid + ".naf"} uri=""></public>
         <fileDesc
           title={(d \\ "title").text}
           filename={pid}/>
@@ -73,15 +74,12 @@ object TEI2NAF {
           <lp name="tei2nafsimple" version="0.0" timestamp={timestamp}/>
         </linguisticProcessors>
       </nafHeader>
-        <raw id="rawText">{cdata}</raw>
+        <raw id="rawText">{pcdata}</raw>
         <text id="basicTokenLayer">{allTokens}</text>
         <tunits id="teiTextUnits">{toTextUnits(n1)}</tunits>
       </NAF>
-      val tmpFile = s"/tmp/$pid.naf.tmp"
-      XML.save(tmpFile, naf, "UTF-8")
-      val naf1 = XML.load(tmpFile)
-      new File(tmpFile).delete()
-      naf1
+
+      NAF(naf)
       // nee dit gaat niet goed als je hem niet eerst opslaat....
       //<textStructure type="TEI" namespace="http://www.tei-c.org/ns/1.0">{toTextStructure(n1)}</textStructure></NAF>
     })
@@ -91,7 +89,7 @@ object TEI2NAF {
     utils.ProcessFolder.processFolder(new File(args(0)), new File(args(1)), (in,out) => {
       val inDoc = XML.loadFile(in)
       tei2naf(inDoc).foreach(
-        XML.save(out, _, "UTF-8")
+        _.save(out)
       )
     })
   }
@@ -106,10 +104,23 @@ object MissivenToNAF {
      case e:Elem if e.label == "pc" => Term(getId(e), e.text, "_", "PC")
     })
 
+  def getTermsFromTEIWithSentenceIds(d: Elem): List[Term] = {
+    val d1 = AddExtraIdsInTEI.completeIds(d)
+    val sentences = d1 \\ "s"
+    val terms = sentences.flatMap( s => {
+      val sentenceId = Some(getId(s))
+      s.descendant.filter(x => x.label == "w" || x.label == "pc").map(
+        { case e: Elem if e.label == "w" => Term(getId(e), e.text, (e \ "@lemma").text, (e \ "@type").text, sentenceId)
+        case e: Elem if e.label == "pc" => Term(getId(e), e.text, "_", "PC", sentenceId)
+        })
+    })
+    terms.toList
+  }
+
   def getTermsFromTEIFile(f: String): List[Term] =  {
     val zipped = s"$f.gz"
     val inputStream = new GZIPInputStream(new FileInputStream(zipped))
-    getTermsFromTEI(XML.load(inputStream))
+    getTermsFromTEIWithSentenceIds(XML.load(inputStream))
   }
 
   def main(args: Array[String]): Unit = {
@@ -120,8 +131,8 @@ object MissivenToNAF {
       naf0.foreach(n => {
         val taggedFile = DataLocations.taggedTEIFolder + "/" + new File(in).getName
         val terms = getTermsFromTEIFile(taggedFile)
-        val n1 = NAF(n).integrateTermLayer(terms.iterator, "termsFromTaggedTEI")
-        XML.save(out, n1.document, "UTF-8") } // hierbij gaat de cdata verloren - repareer dat!
+        val n1 = n.integrateTermLayer(terms.iterator, "termsFromTaggedTEI")
+        n1.save(out) } // hierbij gaat de cdata verloren - repareer dat!
       )
     })
   }

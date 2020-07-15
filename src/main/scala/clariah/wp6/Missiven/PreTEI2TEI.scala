@@ -108,7 +108,9 @@ object PreTEI2TEI {
       case (e1: Elem, i) => val k1 = indexMapping(i); assignIds(e1, myId, k1+1)
       case (x, y) => x
     })
-    val newAtts = if (e.label == "TEI" || noIds.contains(e.label)) e.attributes else  e.attributes.filter(_.key != "id").append(new PrefixedAttribute("xml", "id", myId, Null))
+    val newAtts = if (e.label == "TEI" || noIds.contains(e.label))
+      e.attributes else  e.attributes.filter(_.key != "id")
+       .append(new PrefixedAttribute("xml", "id", myId, Null))
     e.copy(child=newChildren, attributes = newAtts)
   }
 

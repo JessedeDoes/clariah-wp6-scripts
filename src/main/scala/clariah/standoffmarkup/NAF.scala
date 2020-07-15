@@ -1,4 +1,6 @@
 package clariah.standoffmarkup
+import utils.PostProcessXML
+
 import scala.collection.immutable
 import scala.xml._
 
@@ -36,10 +38,11 @@ case class TextUnit(node: Node, text: String) extends Annotation
   override def toString: String = s"$typ $begin:$end $id {$content}"
 }
 
-case class Term(id: String, wordform: String, lemma: String, pos: String)
+case class Term(id: String, wordform: String, lemma: String, pos: String, sentenceId: Option[String] = None)
 
 case class TermWithOffsets(term: Term, offset: Int, length: Int, id: String="") {
-  def nafToken = <wf id={term.id} offset={offset.toString} length={length.toString}>{term.wordform}</wf>
+  val s = term.sentenceId.map(Text(_))
+  def nafToken = <wf id={term.id} offset={offset.toString} sent={s} length={length.toString}>{term.wordform}</wf>
   def nafTerm =  <term id={id} lemma={term.lemma} pos={term.pos}><span><target id={term.id}/></span></term>
 }
 
@@ -67,14 +70,23 @@ case class NAF(document: Elem) {
         Stream.cons(TermWithOffsets(t, next, t.wordform.length), s)
       }
     }
-    val termsWithOffsets = terms.toStream.foldLeft(Stream.empty[TermWithOffsets])(addTerm).zipWithIndex.map{case (t,i) => t.copy(id= "t" + i)}.reverse
+    val termsWithOffsets = terms.toStream
+      .foldLeft(Stream.empty[TermWithOffsets])(addTerm)
+      .zipWithIndex
+      .map{case (t,i) => t.copy(id= "t" + i)}
+      .reverse
+    // TODO check validity
     val textLayer =  <text id={id  + ".tokens"}>{termsWithOffsets.map(_.nafToken)}</text>
     val termLayer =  <terms id={id + ".terms"}>{termsWithOffsets.map(_.nafTerm)}</terms>
-    this.copy(document=this.document.copy(child = this.document.child ++ Seq(textLayer, termLayer)))
+    this.copy(document=this.document.copy(child =
+      this.document.child.filter(_.label != "text") ++ Seq(textLayer, termLayer)))
   }
 
   def save(f: String) = {
-
+    lazy val txt = rawText
+    lazy val cdata =  scala.xml.Unparsed("<![CDATA[" + txt   + "]]>")
+    val d1 = PostProcessXML.updateElement(document, _.label == "raw", e => e.copy(child=cdata))
+    XML.save(f, d1, "UTF-8")
   }
 }
 
@@ -91,5 +103,4 @@ object NAF {
     val (f,t)  = locateString(haystack, "ethet", 5)
     println("<" + haystack.substring(f,t) + ">")
   }
-
 }

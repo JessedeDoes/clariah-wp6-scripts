@@ -44,7 +44,7 @@ object NAFTestje {
 
     val nafje0 = tei2naf(exampleTEI).get
 
-    XML.save("/tmp/nafje.xml", nafje0, "UTF-8")
+    nafje0.save("/tmp/nafje.xml")
 
     testTokens(exampleTEI)
     //println(nafje)
