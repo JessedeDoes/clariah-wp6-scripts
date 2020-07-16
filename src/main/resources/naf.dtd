@@ -668,11 +668,16 @@ The <opinion> layer consists of the following subelement:
 
 <!ELEMENT tunit EMPTY>
 
+<!--
+     - xpath: in case of source xml files, the xpath expression identifying the original text unit (optional)
+-->
+
 <!ATTLIST tunit
   id CDATA #REQUIRED
   offset CDATA #REQUIRED
   length CDATA #REQUIRED
-  type CDATA #IMPLIED>
+  type CDATA #IMPLIED
+  xpath CDATA #IMPLIED>
 
 <!ELEMENT locations (#PCDATA)*>
 
