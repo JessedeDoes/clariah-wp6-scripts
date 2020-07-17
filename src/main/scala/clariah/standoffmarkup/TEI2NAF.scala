@@ -118,23 +118,59 @@ object MissivenToNAF {
     terms.toList
   }
 
-  def getTermsFromTEIFile(f: String): List[Term] =  {
-    val zipped = s"$f.gz"
-    val inputStream = new GZIPInputStream(new FileInputStream(zipped))
-    getTermsFromTEIWithSentenceIds(XML.load(inputStream))
+  def getTermsFromTEIFile(f: String): List[Term] = {
+    val fIn = new File(f)
+    val doc = if (fIn.exists()) XML.load(f) else {
+      val zipped = s"$f.gz"
+      val inputStream = new GZIPInputStream(new FileInputStream(zipped))
+      XML.load(inputStream)
+    }
+    getTermsFromTEIWithSentenceIds(doc)
+  }
+
+  def findTaggedFile(in: String, tagged: String, f: String)  = {
+    f.replaceAll(in,tagged)
+  }
+
+  def tei2NAFWithTermsFromTaggedFile(indir: String, outdir: String, tagged: String): Unit =
+  {
+    utils.ProcessFolder.processFolder(
+      new File(indir),
+      new File(outdir),
+      (in, out) => {
+        val inDoc = XML.loadFile(in)
+        val naf0 = tei2naf(inDoc)
+        naf0.foreach(n => {
+          val taggedFile = findTaggedFile(indir, tagged, in)
+          val terms = getTermsFromTEIFile(taggedFile)
+          val n1 = n.integrateTermLayer(terms.iterator, "termsFromTaggedTEI")
+          n1.save(out)
+        } // hierbij gaat de cdata verloren - repareer dat!
+        )
+      })
   }
 
   def main(args: Array[String]): Unit = {
     //TEI2NAF.main(Array(DataLocations.TEIFolder, DataLocations.tei2nafFolder))
-    utils.ProcessFolder.processFolder(new File(DataLocations.TEIFolder), new File(DataLocations.tei2nafFolder), (in,out) => {
-      val inDoc = XML.loadFile(in)
-      val naf0 = tei2naf(inDoc)
-      naf0.foreach(n => {
-        val taggedFile = DataLocations.taggedTEIFolder + "/" + new File(in).getName
-        val terms = getTermsFromTEIFile(taggedFile)
-        val n1 = n.integrateTermLayer(terms.iterator, "termsFromTaggedTEI")
-        n1.save(out) } // hierbij gaat de cdata verloren - repareer dat!
-      )
-    })
+    utils.ProcessFolder.processFolder(
+      new File(DataLocations.TEIFolder),
+      new File(DataLocations.tei2nafFolder),
+      (in, out) => {
+        val inDoc = XML.loadFile(in)
+        val naf0 = tei2naf(inDoc)
+        naf0.foreach(n => {
+          val taggedFile = DataLocations.taggedTEIFolder + "/" + new File(in).getName
+          val terms = getTermsFromTEIFile(taggedFile)
+          val n1 = n.integrateTermLayer(terms.iterator, "termsFromTaggedTEI")
+          n1.save(out)
+        } // hierbij gaat de cdata verloren - repareer dat!
+        )
+      })
+  }
+}
+
+object TEIToNafWithTagging {
+  def main(args: Array[String]): Unit = {
+    MissivenToNAF.tei2NAFWithTermsFromTaggedFile(args(0), args(1), args(2))
   }
 }
