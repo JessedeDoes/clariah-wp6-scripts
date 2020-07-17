@@ -149,7 +149,7 @@ object MissivenToNAF {
           val taggedFile = findTaggedFile(indir, tagged, in)
           Console.err.println(taggedFile)
           val terms = getTermsFromTEIFile(taggedFile)
-          println(terms)
+          //println(terms)
           val n1 = n.integrateTermLayer(terms.iterator, "termsFromTaggedTEI")
           n1.save(out)
         } // hierbij gaat de cdata verloren - repareer dat!
