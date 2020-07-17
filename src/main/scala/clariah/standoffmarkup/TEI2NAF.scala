@@ -107,13 +107,18 @@ object MissivenToNAF {
   def getTermsFromTEIWithSentenceIds(d: Elem): List[Term] = {
     val d1 = AddExtraIdsInTEI.completeIds(d)
     val sentences = d1 \\ "s"
+
     val terms = sentences.flatMap(s => {
       val sentenceId = Some(getId(s))
-      s.descendant.filter(x => x.label == "w" || x.label == "pc").map(
+      s.descendant.filter(x => x.label == "w" || x.label == "pc").map(n => {
+        val e = n.asInstanceOf[Elem]
+        val e1 = e.copy(child = e.child.filter(_.label != "interpGrp"))
+        val txt = e1.text
+        n match
         {
-          case e: Elem if e.label == "w" => Term(getId(e), e.text, (e \ "@lemma").text, (e \ "@type").text, sentenceId)
-          case e: Elem if e.label == "pc" => Term(getId(e), e.text, "_", "PC", sentenceId)
-        })
+          case e: Elem if e.label == "w" => Term(getId(e), txt, (e \ "@lemma").text, (e \ "@type").text, sentenceId)
+          case e: Elem if e.label == "pc" => Term(getId(e), txt, "_", "PC", sentenceId)
+        }})
     })
     terms.toList
   }
@@ -144,6 +149,7 @@ object MissivenToNAF {
           val taggedFile = findTaggedFile(indir, tagged, in)
           Console.err.println(taggedFile)
           val terms = getTermsFromTEIFile(taggedFile)
+          println(terms)
           val n1 = n.integrateTermLayer(terms.iterator, "termsFromTaggedTEI")
           n1.save(out)
         } // hierbij gaat de cdata verloren - repareer dat!
