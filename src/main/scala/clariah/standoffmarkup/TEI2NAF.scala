@@ -142,6 +142,7 @@ object MissivenToNAF {
         val naf0 = tei2naf(inDoc)
         naf0.foreach(n => {
           val taggedFile = findTaggedFile(indir, tagged, in)
+          Console.err.println(taggedFile)
           val terms = getTermsFromTEIFile(taggedFile)
           val n1 = n.integrateTermLayer(terms.iterator, "termsFromTaggedTEI")
           n1.save(out)
