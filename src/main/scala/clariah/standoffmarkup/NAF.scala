@@ -131,11 +131,16 @@ case class NAF(document: Elem) {
 object NAF {
   def locateString(haystack: String, needle: String, from: Int) = { // dit is nog niet goed want werkt ECHT alleen maar als alle nonwhite klopt en needle nooit white bevat
     val base = (haystack.indexOf(needle(0), from), haystack.indexOf(needle(0), from)+1)
-    def findNext(I: (Int,Int), c: Char) = {  val i1 = haystack.indexOf(c.toString,I._2); (I._1, i1+1) }
-    val range = needle.tail.foldLeft(base)(findNext)
-    if (false && needle.contains("laastgem.")) {
-      Console.err.println(s"$needle $from Found: $range CHECK: <${haystack.substring(range._1, range._2)}>")
+
+    def findNext(I: (Int,Int), c: Char) =
+    {
+      val i1 = haystack.indexOf(c.toString,I._2);
+      if (i1 < 0) {
+        Console.err.println(s"$needle not found from $from")
+      }
+      (I._1, i1+1)
     }
+    val range = needle.tail.foldLeft(base)(findNext)
     range
   }
 
