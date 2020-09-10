@@ -24,15 +24,21 @@ case class NodeWithOffsets(node: Node, start: Int, end: Int, children: Seq[NodeW
   lazy val label = node.label
   lazy val value = label
   lazy val length = end - start
+
   def \(s: String): Seq[NodeWithOffsets] =
     if (s.startsWith("@")) {
       val a = node \ s
       a.map(x => NodeWithOffsets(x, start, start, Seq()))
     } else children.filter(_.node.label == s)
   def \\(s: String): Seq[NodeWithOffsets] = \(s) ++ children.flatMap(x => x.\\(s))
+
   lazy val text = node.text
   lazy val id = node.attributes.find(_.key == "id").map(_.value.text).getOrElse("id_unknown")
   lazy val descendant : Seq[NodeWithOffsets] = children.flatMap(c => Seq(c) ++ c.descendant)
+
+  def offsetsCheckOut(txt: String): Boolean = {
+    txt.substring(start,end) == text && descendant.forall(_.offsetsCheckOut(txt))
+  }
 }
 
 

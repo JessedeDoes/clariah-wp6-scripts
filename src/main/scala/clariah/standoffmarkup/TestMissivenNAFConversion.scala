@@ -12,7 +12,7 @@ object TestMissivenNAFConversion {
 
   import DataLocations._
 
-  val theIds = new java.io.File(TEIFolder).listFiles().map(f => f.getName.replaceAll(".xml",""))
+  val theIds = new java.io.File(TEIFolder6).listFiles().map(f => f.getName.replaceAll(".xml",""))
 
 
  def getParagraphText(p: Elem) = {
@@ -21,12 +21,12 @@ object TestMissivenNAFConversion {
  }
 
   def testje(theId: String) = {
-    val TEIFile = s"$TEIFolder/$theId.xml"
+    val TEIFile = s"$TEIFolder6/$theId.xml"
 
     val nafFile = s"$nafFolder/$theId.naf"
-    val nafFromTEI = s"$tei2nafFolder/$theId.xml"
+    val nafFromTEI = s"$tei2nafFolder6/$theId.xml"
 
-
+    Console.err.println(theId)
     try {
       val TEI = XML.loadFile(TEIFile)
 
@@ -50,7 +50,7 @@ object TestMissivenNAFConversion {
 
         if (pNAF.isDefined) {
 
-          val pnaftei = naftei.getTextUnit(id)
+          val pnaftei: Option[TextUnit] = naftei.getTextUnit(id)
           val teiTxt = getParagraphText(p.asInstanceOf[Elem])
           val nafTxt = pNAF.get.content
 
@@ -65,15 +65,15 @@ object TestMissivenNAFConversion {
           val nafteiTokens = naftei.tokensIn(pnaftei.get).map(_.content).take(20)
 
           // println(nafteiTokens)
-          val check = (teiNowhite == nafNoWhite) // && (nafteiTokens == nafTokens)
+          val check = (teiNowhite == nafNoWhite && (nafteiTokens == nafTokens))
           if (!check) {
             val firstOff = (0 to nafteiTokens.size).find(i => nafTokens(i) != nafteiTokens(i))
             val info = s"${nafteiTokens(firstOff.get)} ${nafTokens(firstOff.get)}"
             println(s"""\n#### Mismatch for $id!!! [$info] ${teiTxt.length} ${nafTxt.length}
               TEI:$teiTxt
-              TEI from NAF:${pnaftei.get.content}
+              NAF from TEI:${pnaftei.get.content} $pnaftei
               NAF:$nafTxt
-              TEI from NAF tokens:$nafteiTokens
+              NAF from TEI tokens:$nafteiTokens
               NAF tokens:$nafTokens\n####""")
           }
         } else {

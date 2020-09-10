@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.zip.GZIPInputStream
-
+import scala.util.{Try,Success}
 import clariah.standoffmarkup.TEI2NAF.tei2naf
 
 import scala.xml.{Elem, Node, Text, XML}
@@ -35,11 +35,43 @@ object TEI2NAF {
     val nodeType = n.node.getClass.getName.replaceAll(".*\\.", "")
     if (n.node.isInstanceOf[Elem]) {
       val down = n.children.flatMap(toTextUnits)
-      val attributes = n.node.attributes.map(a => <attribute name={a.prefixedKey} value={a.value.text}/>)
+      //val attributes = n.node.attributes.map(a => <attribute name={a.prefixedKey} value={a.value.text}/>)
         <tunit id={n.id} offset={n.start.toString} length={n.length.toString} type={n.label}/> ++ down
     } else {
       Seq()
     }
+  }
+
+  def getId(e: Node) = {
+     Try(e.attributes.filter(_.key == "id").value.text) match {
+       case Success(x) => x
+       case _ => ""
+     }
+  }
+
+  def checkTextUnits(teiDoc: Elem, naf: NAF, txt: String): Unit = {
+    val typez = naf.textUnits.map(_.typ).toSet
+    //Console.err.println(s"Aha! ${naf.id} ${naf.textUnits.size} $typez")
+
+    val allTeiElems: Map[String, Node] =  { teiDoc.descendant
+      .filter(n => getId(n).nonEmpty)
+      .map(x => (getId(x), x)).toMap }
+
+    //Console.err.println(s"TEI elems ${allTeiElems.size}")
+
+    naf.textUnits.foreach(
+      t => {
+        val nText = t.content
+        val zText = t.contentIn(txt)
+        if (allTeiElems.contains(t.id)) {
+          val teiElem = allTeiElems(t.id)
+          val teiText = allTeiElems(t.id).text
+          if (nText != teiText && (Set("p", "note").contains(t.typ)))
+            println(s"====   ${t.id} =======\n$t\n<<$nText>>\n<<$zText>>\n###\n<<$teiText>> $teiElem")
+        }
+      }
+    )
+    Console.err.println("Hallo?")
   }
 
   def tei2naf(d0: Elem) = {
@@ -48,9 +80,10 @@ object TEI2NAF {
     textNode.map(n => {
       val n1 = StandoffMarkup.createStandoffMarkup(n, 0)
       val txt = n1.text
-
+      val check0 = n1.offsetsCheckOut(txt)
+      //println(check0)
       lazy val pcdata = txt
-      lazy val cdata = scala.xml.Unparsed("<![CDATA[" + txt + "]]>")
+      // lazy val cdata = scala.xml.Unparsed("<![CDATA[" + txt + "]]>")
       val allTokens = StandoffTokenizing.tokenize(n1, x => splittingTags.contains(x.label))
         ._1.zipWithIndex.map({ case (t, i) =>
         val id = s"wf.$i"
@@ -77,9 +110,7 @@ object TEI2NAF {
             <lp name="tei2nafsimple" version="0.0" timestamp={timestamp}/>
           </linguisticProcessors>
         </nafHeader>
-        <raw id="rawText">
-          {pcdata}
-        </raw>
+        <raw id="rawText">{pcdata}</raw>
         <text id="basicTokenLayer">
           {allTokens}
         </text>
@@ -87,8 +118,10 @@ object TEI2NAF {
           {toTextUnits(n1)}
         </tunits>
       </NAF>
-
-      NAF(naf)
+      val naffie = NAF(naf)
+      if (check0) checkTextUnits(d0, naffie, txt)
+      Console.err.println("Done?")
+      naffie
       // nee dit gaat niet goed als je hem niet eerst opslaat....
       //<textStructure type="TEI" namespace="http://www.tei-c.org/ns/1.0">{toTextStructure(n1)}</textStructure></NAF>
     })

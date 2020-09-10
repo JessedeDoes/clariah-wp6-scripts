@@ -13,14 +13,14 @@ trait Annotation {
   val content: String
 }
 
-case class NafToken(node: Node, text: String) extends Annotation
+case class NafToken(node: Node, rawText: String) extends Annotation
 {
   val begin = (node \ "@offset").text.toInt
   val length = (node \ "@length").text.toInt
   override val end =  begin + length
   val id = (node \ "@id").text
   val typ = "token"
-  val content = text.substring(begin,end)
+  val content = rawText.substring(begin,end)
   override val value = node.text
   override def toString: String = s"$typ $begin:$end $id ($content)"
 }
@@ -32,8 +32,9 @@ case class TextUnit(node: Node, text: String) extends Annotation
   val length = (node \ "@length").text.toInt
   override val end =  begin + length
   val id = (node \ "@id").text
-  val typ = node.label
+  val typ = (node \ "@type").text
   val content = text.substring(begin,end)
+  def contentIn(txt: String) = txt.substring(begin,end)
   override val value = node.label
   override def toString: String = s"$typ $begin:$end $id {$content}"
 }
@@ -55,21 +56,31 @@ case class NAF(document: Elem) {
   lazy val rawText = (document \ "raw").text
   lazy val rawTextNoWhite = rawText.replaceAll("\\s+","")
   lazy val tokens = ((document \ "text").head \ "wf").map(NafToken(_,rawText)).toList
+
+  lazy val tokenMap = tokens.map(t => t.id -> t).toMap
+
   lazy val textUnits = (document \\ "tunit").map(TextUnit(_,rawText))
+
+  lazy val terms = (document \\ "term").map(t =>
+  {
+    val tokenId = (t \\ "target" \ "@id").text// moet eigenlijk in target zitten
+    // println(t)
+    val token = tokenMap(tokenId)
+    Term(tokenId,  token.content, (t \ "@lemma").text, (t \ "@pos").text)
+  })
 
   lazy val tUnitMap = textUnits.map(x => x.id ->x).toMap
 
+  // lazy val terms = (document \\ "term").map(t => Term())
   // println(tokens)
   def getTextUnit(id: String) = tUnitMap.get(id)
 
   def tokensIn(tu: TextUnit): immutable.Seq[NafToken] = tokens.filter(
     t => t.begin >= tu.begin && t.end <= tu.end
   )
-
   /*
       Er gaat iets mis in de BaBtagger bij losstaande punten - die lijken te verdwijnen
   */
-
   def termsCoverText(t: Stream[TermWithOffsets]): Boolean =
   {
     val nonMatchingTerms = t.filter(!termOffsetsMatch(_))
@@ -125,6 +136,25 @@ case class NAF(document: Elem) {
     lazy val cdata =  scala.xml.Unparsed("<![CDATA[" + txt   + "]]>")
     val d1 = PostProcessXML.updateElement(document, _.label == "raw", e => e.copy(child=cdata))
     XML.save(f, d1, "UTF-8")
+  }
+
+  def tabsep(f: String) = {
+    val tok2term: Map[String, Term] = this.terms.map(t => t.id -> t).toMap
+    tokens.foreach(tok => {
+      val term = tok2term.get(tok.id)
+      val word = tok.content.replaceAll("\\s+", " ")
+      val lemma = term.map(_.lemma).getOrElse("-").replaceAll("\\s+", " ")
+      val pos = term.map(_.pos).getOrElse("-").replaceAll("\\s+", " ")
+      println(s"$word\t$lemma")
+    })
+    //this.tokens.
+  }
+}
+
+object NAF2TabSep {
+  def main(args: Array[String]): Unit = {
+    val naf = NAF(XML.load(args(0)))
+    naf.tabsep("x")
   }
 }
 
